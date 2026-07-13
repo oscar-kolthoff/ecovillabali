@@ -2,6 +2,18 @@ import { defineMiddleware } from "astro:middleware";
 
 const isDev = import.meta.env.DEV;
 
+// Astro's own client-hydration runtime (the astro-island element definition,
+// plus the client:load and client:visible directive handlers) injects a few
+// small inline <script> tags with no nonce. Their content is static across
+// requests for a given Astro version, so they're allowed by hash rather than
+// nonce. Without these, every client: island on the site silently fails to
+// hydrate under a strict CSP — no console error, just frozen SSR markup.
+const ASTRO_RUNTIME_SCRIPT_HASHES = [
+  "'sha256-QzWFZi+FLIx23tnm9SBU4aEgx4x8DsuASP07mfqol/c='", // Astro.load (client:load)
+  "'sha256-SaCkFfPruIdTXT8/97JArQmGxiJAL2o4bBDvSgJ5y3Q='", // <astro-island> custom element
+  "'sha256-Q2BPg90ZMplYY+FSdApNErhpWafg2hcRRbndmvxuL/Q='", // Astro.visible (client:visible)
+];
+
 export const onRequest = defineMiddleware(async (context, next) => {
   // Per-request nonce so inline scripts (GTM bootstrap, JSON-LD schema
   // blocks) can run under a strict CSP without 'unsafe-inline'.
@@ -21,7 +33,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     // a strict CSP in production. The other headers are safe in both.
     const csp =
       "default-src 'self'; " +
-      `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com; ` +
+      `script-src 'self' 'nonce-${nonce}' ${ASTRO_RUNTIME_SCRIPT_HASHES.join(" ")} https://www.googletagmanager.com; ` +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "font-src 'self' https://fonts.gstatic.com; " +
       "img-src 'self' data: https://d2xsxph8kpxj0f.cloudfront.net https://www.google-analytics.com; " +

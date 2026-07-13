@@ -19,8 +19,12 @@ const description =
   </Fragment>
 
   <HeroLanding client:load />
-  {/* Property choice comes first, right after the hero, on every device */}
-  <ChooseVilla client:visible />
+  {/* Property choice comes first, right after the hero, on every device.
+      client:load (not client:visible): this section sits close enough to
+      the hero that it can already be in the viewport before Astro's own
+      visibility observer fires, which raced with framer-motion's
+      whileInView and left the cards stuck at opacity:0 in production. */}
+  <ChooseVilla client:load />
   {/* Why the location matters for both villas */}
   <GreenSchool client:visible />
   {/* A mixed look at both homes */}

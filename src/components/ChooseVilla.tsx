@@ -73,8 +73,7 @@ export default function ChooseVilla() {
               <motion.article
                 key={villa.name}
                 initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-primary/40"
               >
