@@ -1,0 +1,167 @@
+{
+  "summary": {
+    "health_score": 83,
+    "business_type": "Local real estate / property developer (eco villas for sale, near Green School Bali) — small marketing site, 11 pages, Astro SSR",
+    "top_findings": [
+      "Google Analytics is silently broken in production: the CSP blocks the inline gtag config script, so zero analytics data is being collected",
+      "Pinch-to-zoom is disabled sitewide (maximum-scale=1 on the viewport meta tag) — a WCAG 1.4.4 violation",
+      "19 of the site's original images (~4.3MB) are still raw JPG; everything added this session was converted to WebP but the original photography never was",
+      "LCP is 3.9-4.5s against a 1.8s target, driven directly by the unoptimized original images",
+      "Color contrast failure on every page's eyebrow label (text-accent utility class, 3.04:1 vs required 4.5:1) — one shared class, one fix, sitewide impact"
+    ],
+    "quick_wins": [
+      "Remove maximum-scale=1 from the viewport meta tag",
+      "Add a nonce/hash to fix the CSP-blocked Google Analytics script",
+      "Darken text-accent color to fix contrast sitewide in one change",
+      "Fix llms.txt's stale 'rice field views' to 'village view' for Villa Kailash",
+      "Change h4 feature labels to h3 in VillaDetails.tsx to fix heading-order skip"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 80,
+      "what_works": [
+        "robots.txt explicitly welcomes GPTBot, ClaudeBot, PerplexityBot, Google-Extended by name",
+        "sitemap.xml and llms.txt present and cover all 11 pages",
+        "Every page fully server-rendered with unique title/canonical/description",
+        "Lighthouse SEO score 100/100 on every page tested"
+      ],
+      "findings": [
+        {
+          "title": "Google Analytics blocked by CSP in production",
+          "severity": "Critical",
+          "description": "The inline gtag('config', ...) script in Layout.astro has no nonce/hash/unsafe-inline allowance in the production CSP set by middleware.ts. Confirmed via browser console CSP violation errors on every page.",
+          "recommendation": "Add a nonce or hash for this inline script, or restructure GA initialization to avoid an inline block."
+        },
+        {
+          "title": "Pinch-to-zoom disabled sitewide",
+          "severity": "Critical",
+          "description": "Viewport meta tag includes maximum-scale=1, a WCAG 1.4.4 violation flagged by Lighthouse on every page.",
+          "recommendation": "Remove maximum-scale=1, keep initial-scale=1.0."
+        },
+        {
+          "title": "llms.txt has a stale fact",
+          "severity": "Low",
+          "description": "Still says 'rice field views' for Villa Kailash; the meta description and VillaDetails.tsx were corrected to 'village view' earlier this session but llms.txt was missed.",
+          "recommendation": "Update llms.txt to match."
+        },
+        {
+          "title": "Blog post 2 title tag over budget",
+          "severity": "Low",
+          "description": "68 characters against a 60-character budget.",
+          "recommendation": "Shorten the title tag."
+        }
+      ]
+    },
+    {
+      "name": "Performance",
+      "score": 65,
+      "what_works": [
+        "CLS is 0 on every page tested",
+        "TBT is 10-20ms, essentially ideal",
+        "Static assets correctly cached with content-hashed filenames"
+      ],
+      "findings": [
+        {
+          "title": "19 original images still raw JPG, ~4.3MB total",
+          "severity": "High",
+          "description": "villa-sungai-hero.jpg (321KB), villa-kailash-hero.jpg (185KB), villa-interior.jpg (234KB), villa-kitchen.jpg (179KB), and 15 more predate this session and were never converted to WebP, unlike every image added during this session.",
+          "recommendation": "Convert to WebP with resize + compression, following the same process used for all images added this session. Expect 70-85% size reduction based on this session's results."
+        },
+        {
+          "title": "LCP is 3.9-4.5s against a 1.8s target",
+          "severity": "High",
+          "description": "2.1-2.5x over target on all three pages audited, directly downstream of the unoptimized hero images.",
+          "recommendation": "Fix via the image conversion above; re-measure after."
+        },
+        {
+          "title": "840ms-2,140ms of render-blocking time",
+          "severity": "Medium",
+          "description": "Likely the synchronous Google Fonts stylesheet and/or GTM script tag on the critical rendering path.",
+          "recommendation": "Investigate preload/async loading strategy for fonts and third-party scripts."
+        }
+      ]
+    },
+    {
+      "name": "Accessibility",
+      "score": 78,
+      "what_works": [
+        "0 missing/empty alt text across every image checked",
+        "Semantic landmarks and lang attribute correct"
+      ],
+      "findings": [
+        {
+          "title": "Color contrast failure on eyebrow labels sitewide",
+          "severity": "High",
+          "description": "The text-accent utility class (used for 'PHOTO GALLERY', 'THE LOCATION', 'THE LIFESTYLE', etc. on every page) renders at 3.04:1 against a 4.5:1 requirement.",
+          "recommendation": "Darken the accent color or increase text size/weight past the large-text 3:1 threshold. One CSS change fixes every instance."
+        },
+        {
+          "title": "Heading hierarchy skips a level on villa pages",
+          "severity": "Medium",
+          "description": "VillaDetails.tsx goes from h2 straight to h4 for feature labels, with no h3.",
+          "recommendation": "Change h4 to h3."
+        },
+        {
+          "title": "Footer social links have no accessible name and go nowhere",
+          "severity": "Medium",
+          "description": "Instagram/Facebook icons use href=\"#\" with no aria-label.",
+          "recommendation": "Add real profile URLs and aria-labels, or remove until real profiles exist."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality / GEO",
+      "score": 90,
+      "what_works": [
+        "Zero duplicate content found in a full cross-page diff this session",
+        "Every page fully crawlable without JavaScript (unlike the live production site)",
+        "27+ FAQ pairs across the site, all schema-backed",
+        "Comprehensive Organization/Person/WebSite/Product/BreadcrumbList/FAQPage/BlogPosting schema coverage"
+      ],
+      "findings": [
+        {
+          "title": "No LocalBusiness/RealEstateAgent schema",
+          "severity": "Low",
+          "description": "This is a Bali-based property business; adding this schema type would strengthen local + GEO signals.",
+          "recommendation": "Add LocalBusiness or RealEstateAgent schema with address/geo/areaServed."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 55,
+      "what_works": [
+        "Every image added this session is WebP, compressed, and correctly alt-texted",
+        "Lazy-loading correctly scoped to below-the-fold images"
+      ],
+      "findings": [
+        {
+          "title": "19 original images not yet optimized (see Performance)",
+          "severity": "High",
+          "description": "See Performance category for detail.",
+          "recommendation": "Convert to WebP."
+        },
+        {
+          "title": "6 unused images in public/images (~1.2MB)",
+          "severity": "Low",
+          "description": "cultural-immersion, green-school-4, jungle-nature, mindful-community, villa-bamboo, villa-pool — none referenced in source.",
+          "recommendation": "Delete."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes", "timeframe": "This week", "items": ["Fix CSP/GA conflict", "Remove maximum-scale=1", "Fix sitewide color contrast"]},
+      {"name": "Phase 2: High-Impact Improvements", "timeframe": "Next 1-2 weeks", "items": ["Convert 19 original images to WebP", "Re-measure LCP", "Investigate render-blocking resources"]},
+      {"name": "Phase 3: Medium-Priority Fixes", "timeframe": "Next month", "items": ["Fix heading order", "Fix/remove dead social links", "Update llms.txt", "Trim over-length titles/descriptions"]},
+      {"name": "Phase 4: Cleanup", "timeframe": "Ongoing", "items": ["Delete unused images", "Add LocalBusiness schema", "Manual accessibility pass"]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
