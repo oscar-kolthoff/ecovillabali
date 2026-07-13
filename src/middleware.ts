@@ -37,7 +37,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       "style-src 'self' 'unsafe-inline'; " +
       "font-src 'self'; " +
       "img-src 'self' data: https://d2xsxph8kpxj0f.cloudfront.net https://www.google-analytics.com; " +
-      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com; " +
+      "connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com; " +
       "frame-ancestors 'none';";
     response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
     response.headers.set("Content-Security-Policy", csp);
