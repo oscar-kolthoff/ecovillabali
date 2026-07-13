@@ -37,12 +37,10 @@ export default function HeroLanding() {
 
       {/* Content */}
       <div className="relative z-10 container h-full flex flex-col justify-center items-start pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="max-w-3xl space-y-6"
-        >
+        {/* No entrance fade on the hero copy: it contains the LCP element
+            (the h1), and animating it from opacity:0 was adding ~1.2s of
+            invisible-text time directly to the page's LCP score. */}
+        <div className="max-w-3xl space-y-6">
           <span className="inline-block px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white text-sm font-medium tracking-wider uppercase">
             Eco Village Sibang
           </span>
@@ -84,7 +82,7 @@ export default function HeroLanding() {
             </span>
             <span className="text-sm tracking-wide">Currently two villas available</span>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

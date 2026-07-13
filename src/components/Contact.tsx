@@ -76,8 +76,8 @@ export default function Contact({ villa = 'sungai', image, asH1 = false }: Conta
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
-          {/* Text Content */}
-          <div className="space-y-8">
+          {/* Text Content (+ image). Order 2 on mobile so the form shows first, then the photo below it; back to left column on desktop. */}
+          <div className="space-y-8 order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ export default function Contact({ villa = 'sungai', image, asH1 = false }: Conta
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 shadow-2xl text-foreground"
+            className="order-1 lg:order-2 bg-white rounded-2xl p-8 shadow-2xl text-foreground"
           >
             <h3 className="font-serif text-2xl font-bold text-primary mb-6">Request a Viewing or More Information</h3>
             <form className="space-y-4" onSubmit={handleSubmit}>
