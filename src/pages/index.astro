@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import HeroLanding, { HERO_IMAGE } from "@/components/HeroLanding";
+import ChooseVilla from "@/components/ChooseVilla";
+import GreenSchool from "@/components/GreenSchool";
+import HomeGallery from "@/components/HomeGallery";
+import Lifestyle from "@/components/Lifestyle";
+import StillDeciding from "@/components/StillDeciding";
+import HomeInquiryCTA from "@/components/HomeInquiryCTA";
+
+const title = "Eco Villas for Sale Near Green School Bali";
+const description =
+  "Discover two unique eco villas within walking distance of Green School Bali. Sustainable homes designed for families seeking nature, community and exceptional living.";
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={HERO_IMAGE} fetchpriority="high" />
+  </Fragment>
+
+  <HeroLanding client:load />
+  {/* Property choice comes first, right after the hero, on every device */}
+  <ChooseVilla client:visible />
+  {/* Why the location matters for both villas */}
+  <GreenSchool client:visible />
+  {/* A mixed look at both homes */}
+  <HomeGallery client:visible />
+  <Lifestyle client:visible />
+  <StillDeciding client:visible />
+  <HomeInquiryCTA client:visible />
+</Layout>

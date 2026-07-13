@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Lifestyle from "@/components/Lifestyle";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+const title = "Lifestyle: A Day in Eco Village Sibang";
+const description =
+  "What daily life actually looks like in Eco Village Sibang: mornings walking to Green School, organic food, cultural immersion, and an international community of families.";
+const breadcrumbSchema = buildBreadcrumbSchema("Lifestyle", "/lifestyle");
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <section class="py-16 md:py-20">
+      <div class="container max-w-3xl mx-auto text-center">
+        <span class="text-accent font-medium tracking-widest uppercase text-sm">A Day in the Life</span>
+        <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3 mb-6">
+          What Living in Eco Village Sibang Actually Looks Like
+        </h1>
+        <p class="text-muted-foreground text-lg leading-relaxed">
+          Mornings start early: children walk or cycle to Green School through bamboo groves and rice paddies while parents share coffee in shaded community spaces. Afternoons bring school pickups and shared meals with neighbors from a dozen countries. By evening, the pace slows into family time and the kind of casual, cross-cultural friendships that only form when everyone chose the same unconventional life on purpose.
+        </p>
+      </div>
+    </section>
+    <Lifestyle client:visible />
+  </div>
+</Layout>

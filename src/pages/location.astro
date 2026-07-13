@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Location from "@/components/Location";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+const title = "Location: Eco Village Sibang Near Green School Bali";
+const description =
+  "Eco Village Sibang sits an 8-minute walk from Green School Bali, 25 minutes from Ubud, and along the Ayung River. See travel times and what makes this location rare.";
+const breadcrumbSchema = buildBreadcrumbSchema("Location", "/location");
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <Location client:visible />
+  </div>
+</Layout>

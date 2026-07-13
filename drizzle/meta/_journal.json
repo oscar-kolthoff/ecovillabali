@@ -15,6 +15,13 @@
       "when": 1767348500592,
       "tag": "0001_lethal_black_tarantula",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1783924937108,
+      "tag": "0002_previous_hitman",
+      "breakpoints": true
     }
   ]
 }

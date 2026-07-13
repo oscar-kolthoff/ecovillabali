@@ -1,0 +1,26 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Contact from "@/components/Contact";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+const title = "Inquire Now: Villa Sungai & Villa Kailash";
+const description =
+  "Request availability, more information, or schedule a viewing for Villa Sungai or Villa Kailash, two eco villas near Green School Bali.";
+const breadcrumbSchema = buildBreadcrumbSchema("Inquire Now", "/inquire-now");
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <div class="container pt-16 pb-4 text-center">
+      <span class="text-accent font-medium tracking-widest uppercase text-sm">Get in Touch</span>
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">
+        Inquire About Villa Sungai or Villa Kailash
+      </h1>
+    </div>
+    <Contact client:load />
+  </div>
+</Layout>

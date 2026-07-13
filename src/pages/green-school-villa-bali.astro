@@ -1,0 +1,382 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ChevronRight, MapPin, Leaf, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import FAQAccordion from "@/components/FAQAccordion";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+const title = "Villas Near Green School Bali: A Buyer's Guide";
+const description =
+  "A curated guide to eco villas within walking distance of Green School Bali: why families choose Eco Village Sibang, what daily life looks like, and where to find rare, sustainable homes near campus.";
+
+const faqs = [
+  {
+    question: "Where do families live near Green School Bali?",
+    answer: "The majority of Green School families live in Eco Village Sibang, a 13-villa sustainable community just an 8-minute walk from campus. Other nearby areas include Ubud and surrounding villages, but homes within walking distance of Green School are exceptionally rare due to limited land availability and zoning restrictions."
+  },
+  {
+    question: "Are there villas within walking distance of Green School Bali?",
+    answer: "Yes, some villas are within walking distance of Green School Bali, but what is less common are homes that combine proximity with eco design and a strong sense of community. While the wider area has seen increased development, places like Eco Village Sibang remain distinctive for offering both walkable access and a more sustainable, family-oriented living environment."
+  },
+  {
+    question: "Is buying a villa near Green School Bali a good investment?",
+    answer: "Properties near Green School Bali appeal to families prioritizing education, sustainability, and community over pure financial returns. The limited supply, strong international demand, and growing reputation of the area suggest stable long-term value. However, investment decisions should consider personal lifestyle goals and market conditions."
+  },
+  {
+    question: "What makes Eco Village Sibang unique?",
+    answer: "Eco Village Sibang combines sustainable architecture, organic community living, and proximity to Green School Bali. Residents enjoy access to a network of like-minded families, natural surroundings, and a lifestyle centered on education and environmental stewardship. The community is intentionally designed for families seeking alternatives to conventional suburban development."
+  },
+  {
+    question: "What is it like living near Green School Bali?",
+    answer: "Living near Green School Bali means joining an international community of educators, entrepreneurs, and families committed to sustainability and progressive education. Daily life includes walkable access to school, nature-based living, strong community connections, and a slower pace compared to urban areas. The lifestyle attracts families seeking meaningful community and environmental consciousness."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+const breadcrumbSchema = buildBreadcrumbSchema("Villas Near Green School Bali", "/green-school-villa-bali");
+
+const whyFamiliesChoose = [
+  {
+    icon: Users,
+    title: "International Community",
+    description: "Join a diverse network of educators, entrepreneurs, and families from around the world united by shared values around education and sustainability."
+  },
+  {
+    icon: Leaf,
+    title: "Sustainable Living",
+    description: "Homes built from natural materials, organic food production, and eco-conscious design are not aspirations but daily practice in Eco Village Sibang."
+  },
+  {
+    icon: MapPin,
+    title: "Walkable Access to School",
+    description: "Children can walk or cycle to school through nature. Parents benefit from community proximity without the isolation of distant suburbs."
+  }
+];
+
+const keyFeatures = [
+  "Sustainable construction using natural materials",
+  "Proximity to Green School Bali (typically 5-15 minutes)",
+  "Access to international community network",
+  "Private natural pools and outdoor living spaces",
+  "Integration with organic food production",
+  "Flexible living spaces for families and remote work",
+  "Natural ventilation and passive cooling design",
+  "Connection to walking trails and river zones"
+];
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  {/* Hero Section */}
+  <section class="relative py-20 md:py-32 bg-gradient-to-b from-primary/5 to-background overflow-hidden">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="text-accent font-medium tracking-widest uppercase text-sm">
+          Living Near Green School Bali
+        </span>
+        <h1 class="font-serif text-5xl md:text-6xl font-bold text-primary mt-4 mb-6">
+          Villas Near Green School Bali
+        </h1>
+        <p class="text-xl text-muted-foreground leading-relaxed mb-8">
+          Discover rare, sustainable homes within walking distance of one of Asia's most innovative schools. A curated guide for families seeking community, education, and eco-conscious living.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" className="bg-accent hover:bg-accent/90" asChild>
+            <a href="/">Explore Available Villas</a>
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+            <a href="/faq">Read Buyer FAQs</a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Why Families Choose */}
+  <section class="py-20 bg-background">
+    <div class="container">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Why Families Choose to Live Near Green School Bali
+        </h2>
+        <p class="text-lg text-muted-foreground leading-relaxed mb-8">
+          Green School Bali has become a magnet for international families seeking an alternative to conventional schooling. The school's emphasis on sustainability, hands-on learning, and global citizenship attracts parents from over 40 countries. For these families, living near campus means more than convenience, it represents a commitment to a lifestyle aligned with the school's values.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {whyFamiliesChoose.map((item) => (
+          <Card className="p-8 border-border/50 hover:border-border transition-colors">
+            <item.icon className="w-12 h-12 text-accent mb-4" />
+            <h3 class="font-serif text-2xl font-bold text-primary mb-3">{item.title}</h3>
+            <p class="text-muted-foreground leading-relaxed">{item.description}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Featured Villas */}
+  <section class="py-20 bg-muted/30">
+    <div class="container">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Featured Villas Near Green School Bali
+        </h2>
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          Discover exceptional homes within walking distance of Green School Bali. Each property reflects the community's commitment to sustainable design, natural materials, and thoughtful living.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        {/* Villa Sungai */}
+        <Card className="overflow-hidden border-border/50 hover:border-border transition-colors">
+          <div class="aspect-video bg-muted flex items-center justify-center overflow-hidden">
+            <img
+              src="/images/villa-sungai-hero.jpg"
+              alt="Villa Sungai"
+              width={1600}
+              height={1067}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          <div class="p-8">
+            <h3 class="font-serif text-2xl font-bold text-primary mb-3">Villa Sungai</h3>
+            <p class="text-muted-foreground mb-6 leading-relaxed">
+              An intimate eco villa combining western comfort with Balinese design. Built from mud, teak, and grass, this home features a closed living area with large bifold doors opening to a private river-view deck.
+            </p>
+            <ul class="space-y-2 mb-6 text-sm text-muted-foreground">
+              <li class="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-accent" />
+                3 Bedrooms with lofts
+              </li>
+              <li class="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-accent" />
+                2 Bathrooms with spa-like ensuite
+              </li>
+              <li class="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-accent" />
+                Private natural pool with river view
+              </li>
+            </ul>
+            <Button variant="outline" className="w-full" asChild>
+              <a href="/villa-sungai">View Villa Sungai</a>
+            </Button>
+          </div>
+        </Card>
+
+        {/* Villa Kailash */}
+        <Card className="overflow-hidden border-border/50 hover:border-border transition-colors">
+          <div class="aspect-video bg-muted flex items-center justify-center overflow-hidden">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/kailash-overview_29fe6cd0.jpg"
+              alt="Villa Kailash"
+              width={2048}
+              height={1365}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          <div class="p-8">
+            <h3 class="font-serif text-2xl font-bold text-primary mb-3">Villa Kailash</h3>
+            <p class="text-muted-foreground mb-6 leading-relaxed">
+              A spacious family home with flexible living spaces. Built from mud, teak, bamboo, and grass, this property features open and closed living areas, perfect for families seeking both community connection and private retreat.
+            </p>
+            <ul class="space-y-2 mb-6 text-sm text-muted-foreground">
+              <li class="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-accent" />
+                3-4 Bedrooms with flexible spaces
+              </li>
+              <li class="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-accent" />
+                3 Bathrooms with spa-like ensuite
+              </li>
+              <li class="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-accent" />
+                Large natural pool with village view
+              </li>
+            </ul>
+            <Button variant="outline" className="w-full" asChild>
+              <a href="/villa-kailash">View Villa Kailash</a>
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  {/* Best Areas */}
+  <section class="py-20 bg-background">
+    <div class="container">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Best Areas to Find Villas Near Green School Bali
+        </h2>
+        <p class="text-lg text-muted-foreground leading-relaxed mb-8">
+          While Green School Bali attracts families from across the island, proximity to campus is the primary consideration. Here's where families typically settle:
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div class="border-l-4 border-accent pl-6">
+          <h3 class="font-serif text-2xl font-bold text-primary mb-3">Eco Village Sibang</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            The closest community to Green School Bali, just an 8-minute walk from campus. Home to 13 sustainable villas and a thriving international community. This is where most walking-distance homes are located.
+          </p>
+        </div>
+
+        <div class="border-l-4 border-accent pl-6">
+          <h3 class="font-serif text-2xl font-bold text-primary mb-3">Ubud & Surroundings</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Broader area with more availability but longer commutes. Ubud offers vibrant culture, dining, and community but requires a 15-30 minute drive to Green School Bali.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Why Rare */}
+  <section class="py-20 bg-muted/30">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Why Eco Villas Near Green School Bali Are Rare
+        </h2>
+        <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            While new homes have been developed in the wider area around Green School Bali in recent years, eco villas and community-focused homes remain relatively rare. For families seeking a sustainable lifestyle close to the school, the available options are still limited.
+          </p>
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-semibold text-primary mb-2">Growth in the Area, but Not Always Sustainable</h3>
+              <p>
+                The area surrounding Green School Bali has seen increasing development, with a growing number of villas and residential projects. However, many of these properties are built with short-term rental or investment in mind, rather than long-term sustainable living.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-primary mb-2">True Eco Design Is Still Uncommon</h3>
+              <p>
+                Homes that prioritize natural materials, environmental integration, and thoughtful design are less common. Eco villas near Green School Bali stand out because they are built with a different intention: focusing on sustainability, comfort, and connection to nature.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-primary mb-2">Community-Focused Living Is Limited</h3>
+              <p>
+                For many families, living near Green School Bali is not just about the house, but about being part of a like-minded community. Developments such as Eco Village Sibang offer this kind of environment, but these types of communities remain relatively small and limited in number.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-primary mb-2">What Families Are Really Looking For</h3>
+              <p>
+                Families relocating to Bali often look beyond standard villas. They seek homes that support a certain lifestyle: sustainable, connected, and close to Green School Bali. Properties that combine these elements are still relatively rare in the area.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Living Near Green School */}
+  <section class="py-20 bg-background">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Living Near Green School Bali: A Day in the Life
+        </h2>
+        <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            Life near Green School Bali revolves around community, nature, and intentional living. Here's what residents experience:
+          </p>
+          <div class="space-y-4 bg-muted/30 p-8 rounded-lg">
+            <p>
+              <strong class="text-primary">Mornings</strong> often begin with children walking or cycling to school through bamboo groves and rice paddies. Parents enjoy coffee in community spaces or work from home offices surrounded by nature.
+            </p>
+            <p>
+              <strong class="text-primary">Afternoons</strong> feature school pickups, community meals, and collaborative projects. Families might work in shared gardens, attend workshops, or simply enjoy the peaceful rhythm of village life.
+            </p>
+            <p>
+              <strong class="text-primary">Evenings</strong> bring community gatherings, family time, and connection with neighbors from around the world. The international mix creates rich cultural exchange and genuine friendships.
+            </p>
+            <p>
+              <strong class="text-primary">Weekends</strong> offer exploration of nearby Ubud, nature hikes, river activities, and deeper community events. The location provides both tranquility and access to cultural experiences.
+            </p>
+          </div>
+          <p>
+            This lifestyle appeals to families seeking alternatives to conventional suburban living: those who prioritize education quality, environmental consciousness, and meaningful community over material accumulation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Key Features */}
+  <section class="py-20 bg-muted/30">
+    <div class="container">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Key Features of Eco Village Sibang Near Green School Bali
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        {keyFeatures.map((feature) => (
+          <div class="flex gap-4">
+            <Leaf className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+            <p class="text-muted-foreground">{feature}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="py-20 bg-background">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-12">
+          Frequently Asked Questions
+        </h2>
+        <FAQAccordion faqs={faqs} idPrefix="gsvb-faq" client:load />
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="py-20 bg-gradient-to-b from-primary/5 to-background">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="font-serif text-4xl font-bold text-primary mb-6">
+          Ready to Explore Villas Near Green School Bali?
+        </h2>
+        <p class="text-lg text-muted-foreground mb-8 leading-relaxed">
+          Whether you're relocating your family, seeking a sustainable investment, or exploring the Green School Bali community, we're here to help you find the right home.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" className="bg-accent hover:bg-accent/90" asChild>
+            <a href="/inquire-now">Inquire About Available Villas</a>
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+            <a href="/location">Explore the Area</a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

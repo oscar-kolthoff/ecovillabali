@@ -1,0 +1,38 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero";
+import VillaDetails from "@/components/VillaDetails";
+import GalleryKailash from "@/components/GalleryKailash";
+import Contact from "@/components/Contact";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+const title = "Villa Kailash: Spacious Eco Villa Near Green School Bali";
+const description =
+  "Villa Kailash is a spacious 4-bedroom eco villa in Sibang with rice field views and a natural pool, just an 8-minute walk from Green School Bali.";
+const image = "https://ecovillabali.com/images/villa-kailash-hero.jpg";
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Villa Kailash",
+  description:
+    "Spacious 3/4-bedroom eco villa in Eco Village Sibang with rice field views, a natural pool, yoga studio, and 950 sqm of land, an 8-minute walk from Green School Bali.",
+  image,
+  brand: { "@type": "Organization", name: "Eco Villa Bali" },
+  category: "Eco family villa for sale",
+};
+const breadcrumbSchema = buildBreadcrumbSchema("Villa Kailash", "/villa-kailash");
+---
+
+<Layout title={title} description={description} image={image} type="product">
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/images/villa-kailash-hero.jpg" fetchpriority="high" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <Hero villa="kailash" client:load />
+  <VillaDetails villa="kailash" client:visible />
+  <GalleryKailash client:visible />
+  <Contact villa="kailash" client:visible />
+</Layout>
