@@ -74,36 +74,45 @@ export default function Contact({ villa = 'sungai', image, asH1 = false }: Conta
       </div>
 
       <div className="container relative z-10">
+        {/* Eyebrow, heading & intro copy: always above the form/image, on every viewport. */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-12"
+        >
+          <span className="text-secondary font-medium tracking-widest uppercase text-sm">Inquire Now</span>
+          <Heading className="font-serif text-4xl md:text-5xl font-bold mt-3 mb-6">
+            Request Pricing & Availability
+          </Heading>
+          <p className="text-primary-foreground/80 text-lg leading-relaxed">
+            Interested in Villa Sungai or Villa Kailash? Leave your details and I'll personally share availability, more information, and arrange a viewing if desired.
+          </p>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
-          {/* Text Content (+ image). Order 2 on mobile so the form shows first, then the photo below it; back to left column on desktop. */}
-          <div className="space-y-8 order-2 lg:order-1">
+
+          {/* Image. Order 2 on mobile so the form shows first, then the photo below it; back to left column on desktop. */}
+          {image && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
             >
-              <span className="text-secondary font-medium tracking-widest uppercase text-sm">Inquire Now</span>
-              <Heading className="font-serif text-4xl md:text-5xl font-bold mt-3 mb-6">
-                Request Pricing & Availability
-              </Heading>
-              <p className="text-primary-foreground/80 text-lg leading-relaxed mb-8">
-                Interested in Villa Sungai or Villa Kailash? Leave your details and I'll personally share availability, more information, and arrange a viewing if desired.
-              </p>
-              {image && (
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  width={640}
-                  height={480}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto rounded-2xl"
-                />
-              )}
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={640}
+                height={480}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto rounded-2xl"
+              />
             </motion.div>
-          </div>
+          )}
 
           {/* Form */}
           <motion.div
@@ -111,7 +120,7 @@ export default function Contact({ villa = 'sungai', image, asH1 = false }: Conta
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="order-1 lg:order-2 bg-white rounded-2xl p-8 shadow-2xl text-foreground"
+            className={`order-1 lg:order-2 bg-white rounded-2xl p-8 shadow-2xl text-foreground${image ? "" : " lg:col-span-2 lg:max-w-2xl"}`}
           >
             <h3 className="font-serif text-2xl font-bold text-primary mb-6">Request a Viewing or More Information</h3>
             <form className="space-y-4" onSubmit={handleSubmit}>
