@@ -55,7 +55,7 @@ export default function Location({ villa = 'sungai' }: LocationProps) {
                   </span>
                   <div>
                     <strong className="block text-foreground">Ubud Center</strong>
-                    <span className="text-muted-foreground">25 minutes drive to culture & dining</span>
+                    <span className="text-muted-foreground">20 minutes drive to culture & dining</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -73,7 +73,7 @@ export default function Location({ villa = 'sungai' }: LocationProps) {
                   </span>
                   <div>
                     <strong className="block text-foreground">Ngurah Rai Airport</strong>
-                    <span className="text-muted-foreground">50 minutes drive</span>
+                    <span className="text-muted-foreground">40 minutes drive</span>
                   </div>
                 </li>
               </ul>
