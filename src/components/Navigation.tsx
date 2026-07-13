@@ -91,7 +91,7 @@ export default function Navigation({ currentPath }: NavigationProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-full px-6 py-2 font-serif transition-all hover:scale-105 text-sm font-bold tracking-wide bg-primary text-primary-foreground hover:bg-primary/90"
+                className="rounded-full px-6 py-2 font-serif transition-all hover:scale-105 text-sm font-bold tracking-wide bg-accent text-accent-foreground hover:bg-accent/90"
               >
                 {link.label}
               </a>
@@ -150,7 +150,7 @@ export default function Navigation({ currentPath }: NavigationProps) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-lg font-serif font-bold text-primary hover:text-accent"
+                  className="text-lg font-serif font-bold text-accent hover:text-accent/80"
                 >
                   {link.label}
                 </a>

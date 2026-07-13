@@ -166,7 +166,7 @@ export default function Contact({ villa = 'sungai', image, asH1 = false }: Conta
 
               <Button 
                 type="submit" 
-                className="w-full h-12 text-lg font-serif bg-primary text-primary-foreground hover:bg-primary/90"
+                className="w-full h-12 text-lg font-serif bg-accent text-accent-foreground hover:bg-accent/90"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Inquiry"}
