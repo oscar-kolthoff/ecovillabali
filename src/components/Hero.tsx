@@ -9,6 +9,7 @@ interface HeroProps {
 export const villaData = {
   sungai: {
     image: '/images/villa-sungai-hero.webp',
+    mobileImage: '/images/villa-sungai-hero-mobile.webp',
     width: 1600,
     height: 1067,
     name: 'Villa Sungai',
@@ -17,6 +18,7 @@ export const villaData = {
   },
   kailash: {
     image: '/images/villa-kailash-hero.webp',
+    mobileImage: '/images/villa-kailash-hero-mobile.webp',
     width: 1600,
     height: 1066,
     name: 'Villa Kailash',
@@ -38,6 +40,8 @@ export default function Hero({ villa = 'sungai' }: HeroProps) {
       <div className="absolute inset-0 z-0">
         <img
           src={currentData.image}
+          srcSet={`${currentData.mobileImage} 750w, ${currentData.image} 1400w`}
+          sizes="100vw"
           alt={`${currentData.name} exterior near Green School Bali`}
           width={currentData.width}
           height={currentData.height}
@@ -52,12 +56,8 @@ export default function Hero({ villa = 'sungai' }: HeroProps) {
 
       {/* Content */}
       <div className="relative z-10 container h-full flex flex-col justify-center items-start pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="max-w-3xl space-y-4"
-        >
+        {/* No entrance fade here either: same LCP reasoning as HeroLanding. */}
+        <div className="max-w-3xl space-y-4">
           <span className="inline-block px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white text-sm font-medium tracking-wider uppercase">
             For Sale
           </span>
@@ -92,7 +92,7 @@ export default function Hero({ villa = 'sungai' }: HeroProps) {
               Schedule Viewing
             </Button>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

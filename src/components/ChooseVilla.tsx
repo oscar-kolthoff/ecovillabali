@@ -17,6 +17,7 @@ const villas = [
     name: "Villa Sungai",
     href: "/villa-sungai",
     image: "/images/villa-sungai-hero.webp",
+    imageMobile: "/images/villa-sungai-hero-mobile.webp",
     tagline: "Riverside setting",
     taglineIcon: Waves,
     highlights: [
@@ -31,6 +32,7 @@ const villas = [
     name: "Villa Kailash",
     href: "/villa-kailash",
     image: "/images/villa-kailash-hero.webp",
+    imageMobile: "/images/villa-kailash-hero-mobile.webp",
     tagline: "Light & spacious family house",
     taglineIcon: Sun,
     highlights: [
@@ -85,6 +87,8 @@ export default function ChooseVilla() {
                 >
                   <img
                     src={villa.image}
+                    srcSet={`${villa.imageMobile} 750w, ${villa.image} 1400w`}
+                    sizes="(min-width: 1024px) 45vw, 100vw"
                     alt={`${villa.name} near Green School Bali`}
                     width={800}
                     height={600}

@@ -24,6 +24,8 @@ export default function HeroLanding() {
       <div className="absolute inset-0 z-0">
         <img
           src={HERO_IMAGE}
+          srcSet="/images/villa-sungai-hero-mobile.webp 750w, /images/villa-sungai-hero.webp 1400w"
+          sizes="100vw"
           alt="Villa Sungai exterior near Green School Bali"
           width={1600}
           height={1067}

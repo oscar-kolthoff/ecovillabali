@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import HeroLanding, { HERO_IMAGE } from "@/components/HeroLanding";
+import HeroLanding from "@/components/HeroLanding";
 import ChooseVilla from "@/components/ChooseVilla";
 import GreenSchool from "@/components/GreenSchool";
 import HomeGallery from "@/components/HomeGallery";
@@ -15,7 +15,11 @@ const description =
 
 <Layout title={title} description={description}>
   <Fragment slot="head">
-    <link rel="preload" as="image" href={HERO_IMAGE} fetchpriority="high" />
+    {/* No <link rel="preload"> for the hero image: it can't reliably match
+        the <img>'s srcset choice (it fetched the full-size image regardless
+        of viewport), causing a duplicate download on mobile. fetchpriority
+        "high" on the <img> itself is enough for the preload scanner to find
+        the correct (responsive) candidate early. */}
   </Fragment>
 
   <HeroLanding client:load />
