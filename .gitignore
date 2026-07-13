@@ -109,3 +109,6 @@ temp/
 
 # Astro generated files
 .astro/
+
+# Raw source photos (originals kept locally, optimized webp live in public/images)
+source-photos/

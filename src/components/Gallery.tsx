@@ -135,6 +135,78 @@ export default function Gallery() {
       desc: "Modern bathroom featuring rain shower, natural materials, and spa-like atmosphere"
     },
     {
+      src: "/images/VS-natural-pool-sunrise.webp",
+      width: 1372,
+      height: 1800,
+      alt: "Natural stone pool at sunrise",
+      title: "Natural Pool at Sunrise",
+      desc: "Morning mist rising off the natural pool as the sun filters through the bamboo and palms"
+    },
+    {
+      src: "/images/VS-living-dining.webp",
+      width: 2048,
+      height: 1341,
+      alt: "Open-plan living and dining area",
+      title: "Living & Dining Under Teak Beams",
+      desc: "Solid teak dining table and wishbone chairs opening onto the living room and rattan hanging chair"
+    },
+    {
+      src: "/images/VS-living-room-sofa.webp",
+      width: 1365,
+      height: 2048,
+      alt: "Living room sofa in afternoon light",
+      title: "Living Room Corner",
+      desc: "A deep, comfortable sofa in the living room, bathed in warm afternoon light through the timber doors"
+    },
+    {
+      src: "/images/VS-window-seat.webp",
+      width: 1435,
+      height: 2048,
+      alt: "Cushioned window seat by casement windows",
+      title: "Window Seat Reading Nook",
+      desc: "A cushioned window seat framed by timber casement windows that open straight into the greenery"
+    },
+    {
+      src: "/images/VS-rattan-hanging-chair.webp",
+      width: 1365,
+      height: 2048,
+      alt: "Woven rattan hanging chair by the window",
+      title: "Rattan Hanging Chair",
+      desc: "A handwoven rattan hanging chair set by the window, a favourite spot to read with a jungle backdrop"
+    },
+    {
+      src: "/images/VS-childrens-bedroom.webp",
+      width: 2048,
+      height: 1365,
+      alt: "Children's bedroom with canopy bed and loft ladder",
+      title: "Children's Bedroom",
+      desc: "A playful children's room with a canopy bed, loft ladder, and a hand-painted storybook wall"
+    },
+    {
+      src: "/images/VS-bathroom-laundry.webp",
+      width: 2048,
+      height: 1365,
+      alt: "Bathroom with carved stone basin and rain shower",
+      title: "Open Bathroom & Laundry",
+      desc: "Open bathroom with a carved stone basin, rain shower, and pebbled floor beneath the thatched roof"
+    },
+    {
+      src: "/images/VS-villa-jungle-exterior.webp",
+      width: 1700,
+      height: 1132,
+      alt: "Thatched villa surrounded by jungle",
+      title: "Villa in the Jungle",
+      desc: "The thatched villa tucked into the trees, with an open deck and hammock overlooking the garden"
+    },
+    {
+      src: "/images/VS-aerial-canopy.webp",
+      width: 2048,
+      height: 1364,
+      alt: "Aerial view over the jungle canopy",
+      title: "Above the Canopy",
+      desc: "Aerial view over the dense palm canopy that surrounds the villa in the golden morning light"
+    },
+    {
       src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/IMG_5403_eb31c991.jpg",
       width: 4032,
       height: 3024,
