@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
+@import "@fontsource-variable/dm-sans/wght.css";
+@import "@fontsource-variable/playfair-display/wght.css";
+@import "@fontsource-variable/playfair-display/wght-italic.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -42,8 +45,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   
-  --font-sans: "DM Sans", sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --font-sans: "DM Sans Variable", sans-serif;
+  --font-serif: "Playfair Display Variable", serif;
 }
 
 /* 

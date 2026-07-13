@@ -56,8 +56,8 @@ export default function GreenSchool({ villa = 'sungai' }: GreenSchoolProps) {
             <img
               src="/images/green-school-3.webp"
               alt="Green School Architecture"
-              width={768}
-              height={665}
+              width={700}
+              height={606}
               loading="lazy"
               decoding="async"
               className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
