@@ -5,6 +5,21 @@ interface LocationProps {
   villa?: 'sungai' | 'kailash';
 }
 
+const galleryImages = [
+  { src: "/images/location-gallery-01-pathway-thatched-villas.webp", alt: "Stone pathway winding through the jungle past thatched-roof villas", width: 900, height: 1200 },
+  { src: "/images/location-gallery-02-stepping-stones-lawn.webp", alt: "Stepping-stone path across a grassy lawn near the villas", width: 900, height: 1200 },
+  { src: "/images/location-gallery-03-jungle-steps-shrine.webp", alt: "Stone steps leading uphill through the jungle past a small shrine", width: 900, height: 502 },
+  { src: "/images/location-gallery-04-balinese-shrine.webp", alt: "Traditional Balinese shrine surrounded by ferns and jungle trees", width: 900, height: 600 },
+  { src: "/images/location-gallery-05-vine-covered-path.webp", alt: "Vine-covered walkway leading through a jungle archway", width: 900, height: 600 },
+  { src: "/images/location-gallery-06-villa-in-jungle.webp", alt: "Thatched-roof villa nestled among trees beside a small pond", width: 900, height: 600 },
+  { src: "/images/location-gallery-07-aerial-canopy.webp", alt: "Aerial view of Eco Village Sibang's jungle canopy and thatched rooftops", width: 900, height: 599 },
+  { src: "/images/location-gallery-08-aerial-misty-sunrise.webp", alt: "Aerial view of misty jungle and rice fields at sunrise with distant volcanoes", width: 900, height: 675 },
+  { src: "/images/location-gallery-09-full-moon-villa.webp", alt: "Full moon rising over a villa rooftop at night", width: 900, height: 1200 },
+  { src: "/images/location-gallery-10-night-pool-gathering.webp", alt: "Community gathering by the natural pool, lit with string lights at night", width: 900, height: 506 },
+  { src: "/images/location-gallery-11-evening-friends.webp", alt: "Friends relaxing by the natural pool in the evening", width: 900, height: 1200 },
+  { src: "/images/location-gallery-12-community-group-photo.webp", alt: "Group photo of the Eco Village Sibang community at night", width: 900, height: 675 },
+];
+
 export default function Location({ villa = 'sungai' }: LocationProps) {
   return (
     <section id="location" className="py-24 bg-muted/30">
@@ -106,6 +121,35 @@ export default function Location({ villa = 'sungai' }: LocationProps) {
           </div>
         </div>
 
+        {/* Impression of Eco Village Sibang Gallery */}
+        <div className="mt-24 pt-24 border-t border-border/50">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-accent font-medium tracking-widest uppercase text-sm">Impression of Eco Village Sibang</span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mt-3 mb-6">
+              Experience the Beauty
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Discover the lush jungle landscapes, vibrant community moments, and natural serenity that define life in Eco Village Sibang. From sunrise to sunset, this is where sustainable living meets authentic community.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((image) => (
+              <div key={image.src} className="rounded-2xl overflow-hidden shadow-sm group">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Green Corridor Section */}
         <div className="mt-24 pt-24">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -137,18 +181,36 @@ export default function Location({ villa = 'sungai' }: LocationProps) {
             <div className="prose prose-lg text-muted-foreground">
               <h3 className="font-serif text-2xl font-bold text-primary mb-4">The Vision</h3>
               <p>
-                The Green Corridor is a proposed forested zone running through Sibang Kaja, Bali — a living, breathing community where sustainable architecture, organic food production, nature education, and ecological stewardship are not aspirations but daily practice.
+                The Green Corridor is a proposed forested zone through Sibang Kaja: a living community where sustainable architecture, organic food production, and ecological stewardship are daily practice, extending the same values that already define Eco Village Sibang today.
               </p>
               <p>
-                Ideally, a cycling track will connect Green Village to Green School, with the Corridor sitting at the centre — creating an extended, interconnected community buffered from concrete development on the outside.
-              </p>
-              <p>
-                Walking trails along both sides of the Ayung River offer an alternate route and a continuous loop through the still-natural river zone.
-              </p>
-              <p>
-                These trails would join us with other key sustainability members: Ibu Eli's organic farm, Gove's orchard home, Green Camp, and Ibuku — weaving together a community of shared values and shared land.
+                A planned cycling track and riverside walking trails would connect the village even more closely to Green School and the wider Ayung River area, buffered from concrete development on the outside.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Closing CTA */}
+        <div className="mt-24 pt-16 border-t border-border/50 text-center">
+          <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-4">
+            Ready to See It for Yourself?
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            Villa Sungai and Villa Kailash are both available now, an 8-minute walk from Green School Bali.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/villa-sungai"
+              className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
+            >
+              View Villa Sungai
+            </a>
+            <a
+              href="/villa-kailash"
+              className="inline-block px-8 py-3 border border-primary/30 text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              View Villa Kailash
+            </a>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ export default function GreenSchool({ villa = 'sungai' }: GreenSchoolProps) {
             className="rounded-2xl overflow-hidden shadow-lg max-w-2xl mx-auto"
           >
             <img
-              src="/images/green-school-3.jpg"
+              src="/images/green-school-3.webp"
               alt="Green School Architecture"
               width={768}
               height={665}

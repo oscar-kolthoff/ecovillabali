@@ -1,0 +1,303 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FAQAccordion from "@/components/FAQAccordion";
+import { buildBreadcrumbSchema, buildArticleSchema, buildFaqSchema } from "@/lib/schema";
+
+const title = "Sustainable Living Near Green School Bali: Inside Eco Village Sibang";
+const description =
+  "What sustainable living actually looks like in Eco Village Sibang: walkability, community, and homes built from natural materials, 8 minutes from Green School Bali.";
+const image = "https://ecovillabali.com/images/blog-family-exploring-sustainable-living.webp";
+const path = "/blog/sustainable-living-bali-eco-village-sibang";
+
+const faqs = [
+  {
+    question: "What is sustainable living?",
+    answer:
+      "Sustainable living involves making choices that reduce environmental impact while supporting long-term wellbeing, community resilience and responsible use of resources.",
+  },
+  {
+    question: "Why do Green School families choose Eco Village Sibang?",
+    answer:
+      "Many families choose Eco Village Sibang because of its strong community, sustainable design principles and convenient location just 8 minutes from Green School Bali.",
+  },
+  {
+    question: "Is Eco Village Sibang within walking distance of Green School Bali?",
+    answer:
+      "Yes. Eco Village Sibang is approximately 700 meters from Green School Bali and can be reached in around 8 minutes on foot or a few minutes by bicycle.",
+  },
+  {
+    question: "Are sustainable homes comfortable in Bali?",
+    answer:
+      "Yes. Modern sustainable homes often use passive cooling, natural ventilation and climate-responsive design to create comfortable living environments without excessive energy consumption.",
+  },
+  {
+    question: "What makes a community sustainable?",
+    answer:
+      "A sustainable community balances environmental responsibility, social connection and long-term resilience while supporting a high quality of life for residents.",
+  },
+  {
+    question: "Is Eco Village Sibang suitable for families?",
+    answer:
+      "Eco Village Sibang was designed with family living in mind and is home to many Green School families who value community, nature and walkability.",
+  },
+];
+
+const articleSchema = buildArticleSchema({
+  headline: "Sustainable Living Near Green School Bali: Inside Eco Village Sibang",
+  description,
+  path,
+  image,
+  datePublished: "2026-06-15",
+});
+const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
+const faqSchema = buildFaqSchema(faqs);
+const cspNonce = Astro.locals.cspNonce;
+---
+
+<Layout title={title} description={description} image={image}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <div class="container max-w-3xl mx-auto px-4 py-16">
+      <a href="/blog" class="text-sm text-muted-foreground hover:text-accent transition-colors mb-8 inline-block">
+        &larr; Back to Blog
+      </a>
+
+      <header class="mb-8">
+        <div class="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+          <span>June 2026</span>
+          <span>&middot;</span>
+          <span>Sustainability</span>
+          <span>&middot;</span>
+          <span>11 min read</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
+          Sustainable Living Near Green School Bali: Inside Eco Village Sibang
+        </h1>
+        <p class="text-muted-foreground">By Eco Villa Bali</p>
+      </header>
+
+      <div class="space-y-5 text-foreground/90 leading-relaxed">
+        <p>For many families, the journey begins with Green School Bali.</p>
+
+        <p>
+          What attracts them initially is often the school's innovative approach to education, sustainability and
+          experiential learning. But as families spend more time exploring the area, another question naturally
+          emerges: what would it actually be like to live according to those same values every day?
+        </p>
+
+        <p>
+          Sustainable living is often associated with solar panels, bamboo architecture and eco-friendly
+          technologies. While those elements certainly play a role, the reality is much broader. For many families,
+          sustainability is just as much about community, children's independence, walkability, food, connection to
+          nature and a slower pace of life.
+        </p>
+
+        <p>
+          This is one of the reasons why Eco Village Sibang has become a popular choice among Green School families.
+          Located just an 8-minute walk from campus, it offers an opportunity to align daily life with many of the
+          same principles that attracted families to Green School in the first place.
+        </p>
+
+        <img
+          src="/images/blog-children-natural-playground.webp"
+          alt="Children playing in natural playground"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+          class="w-full max-w-2xl rounded-lg mx-auto my-8"
+        />
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">What Sustainable Living Really Means</h2>
+
+        <p>
+          Sustainability is often misunderstood as a collection of environmental features. Solar panels, rainwater
+          systems and natural building materials are important, but they are only part of the picture.
+        </p>
+
+        <p>A truly sustainable lifestyle considers three interconnected elements: environmental, social, and economic sustainability.</p>
+
+        <p>
+          Environmental sustainability focuses on reducing environmental impact through responsible use of
+          resources, energy efficiency and regenerative practices. Social sustainability is about creating
+          communities where people know their neighbours, children can move around safely and families feel
+          connected to one another. Economic sustainability focuses on creating systems that can thrive over the
+          long term rather than relying on excessive consumption or waste.
+        </p>
+
+        <p>The most successful communities combine all three.</p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Why Green School Families Often Seek a Different Lifestyle</h2>
+
+        <p>Families rarely move across the world solely because of a school. In many cases, Green School simply becomes the catalyst for a broader lifestyle change.</p>
+
+        <p>
+          Parents are often looking for more time outdoors, less time in traffic, stronger community connections,
+          greater independence for their children, a healthier relationship with nature, and a slower, more
+          intentional pace of life.
+        </p>
+
+        <p>
+          Many families arrive in Bali after years of busy urban living. They are successful professionals,
+          entrepreneurs or remote workers who have reached a point where quality of life becomes more important
+          than convenience or status. Green School provides an educational environment that reflects these values.
+          Naturally, many families begin searching for a living environment that does the same.
+        </p>
+
+        <img
+          src="/images/blog-family-exploring-sustainable-living.webp"
+          alt="Family exploring sustainable living"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+          class="w-full max-w-2xl rounded-lg mx-auto my-8"
+        />
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Inside Eco Village Sibang</h2>
+
+        <p>
+          Eco Village Sibang was created around a simple idea: how can modern families live comfortably while
+          reducing their environmental footprint and increasing their connection to community and nature? The
+          result is a neighbourhood where sustainability is not treated as an afterthought.
+        </p>
+
+        <p>
+          Many homes incorporate natural building materials, reclaimed timber, bamboo elements, passive cooling
+          design, thick earthen walls, natural landscaping, and water-conscious systems.
+        </p>
+
+        <p>
+          The goal is not to sacrifice comfort. The goal is to create homes that work with Bali's climate rather
+          than constantly fighting against it. This approach often results in homes that feel naturally cooler,
+          quieter and more connected to their surroundings.
+        </p>
+
+        <p>
+          But perhaps more importantly, the village itself is designed around people rather than cars. Families
+          walk. Children cycle. Neighbours know one another. Community life happens naturally.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">The Sustainability of Daily Life</h2>
+
+        <p>
+          One of the biggest surprises for many families is that the most meaningful sustainable changes are often
+          the simplest. Instead of spending hours each week commuting, children walk or cycle to school. Instead of
+          organising play dates across town, children meet friends who live just a few minutes away. Instead of
+          spending weekends escaping traffic, families spend time gardening, exploring nature or participating in
+          community events.
+        </p>
+
+        <p>
+          These small shifts create a different rhythm of life. A typical morning might begin with a short walk
+          through the neighbourhood to Green School. Parents often stop for coffee with other families after
+          drop-off. Children become familiar with the people around them and develop a stronger sense of
+          independence.
+        </p>
+
+        <p>These experiences may seem simple, but they significantly impact quality of life over time.</p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Why Walkability Matters More Than Most Families Expect</h2>
+
+        <p>
+          When families first consider relocating to Bali, walkability is rarely at the top of their list. After
+          living near Green School, many realise it becomes one of the most valuable aspects of daily life.
+        </p>
+
+        <p>
+          Eco Village Sibang is located approximately 700 meters from Green School Bali, making it possible to
+          reach campus in around 8 minutes on foot or just a few minutes by bicycle. The benefits go far beyond
+          convenience: less time in traffic, greater independence for children, more spontaneous social
+          interactions, reduced transportation costs, lower environmental impact, and stronger community
+          connections.
+        </p>
+
+        <p>
+          Children who can safely walk or cycle to school often develop confidence and independence earlier than
+          those who rely on daily car transportation. For many families, this becomes one of the most appreciated
+          aspects of living near Green School.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Building a Community Rather Than Just Owning a Home</h2>
+
+        <p>A house is important. A community is often what determines whether a family truly feels at home.</p>
+
+        <p>
+          One of the defining characteristics of Eco Village Sibang is the strength of its community. Many
+          residents share similar values around education, sustainability, family life, health and wellbeing, and
+          international living. This naturally creates opportunities for connection.
+        </p>
+
+        <p>
+          Families support one another during relocations. Parents share recommendations and advice. Children form
+          friendships that extend beyond the school environment. Community dinners, workshops and informal
+          gatherings help strengthen these relationships over time.
+        </p>
+
+        <p>
+          For families moving far from their home countries, this sense of belonging can be just as valuable as the
+          physical home itself.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Can Sustainable Living Also Be Comfortable?</h2>
+
+        <p>One of the most common misconceptions about sustainable living is that it requires sacrifice. In reality, many modern sustainable homes are designed to increase comfort rather than reduce it.</p>
+
+        <p>
+          Thoughtful architecture, passive cooling, natural ventilation and locally appropriate materials often
+          create living environments that feel more comfortable and healthier than conventional alternatives. At
+          Eco Village Sibang, sustainability and comfort are not opposing ideas. They work together.
+        </p>
+
+        <p>
+          The goal is not to live with less. The goal is to live more intentionally. For many families, that means
+          enjoying beautiful homes, meaningful community connections, greater access to nature and a lifestyle that
+          feels aligned with the values they hope to pass on to their children.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Final Thoughts</h2>
+
+        <p>
+          For families considering Green School Bali, sustainable living often becomes part of a much larger
+          conversation about lifestyle, community and quality of life. Eco Village Sibang offers one example of how
+          these values can come together in practice.
+        </p>
+
+        <p>
+          Its walkable location, family-focused environment, strong community and thoughtful approach to
+          sustainability have made it a natural choice for many Green School families.
+        </p>
+
+        <p>
+          Ultimately, sustainable living is not defined by a single building material or technology. It is
+          reflected in how people live, connect, learn and grow together. For many families exploring life near
+          Green School Bali, that journey begins with a school and evolves into a completely different way of
+          living.
+        </p>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-border">
+        <h2 class="font-serif text-2xl font-bold text-primary mb-8">Frequently Asked Questions</h2>
+        <FAQAccordion faqs={faqs} idPrefix="sustainable-living-faq" client:load />
+      </div>
+
+      <div class="mt-16 p-8 bg-card border border-border rounded-lg text-center">
+        <h3 class="font-serif text-2xl font-semibold text-primary mb-3">See sustainable living for yourself</h3>
+        <p class="text-muted-foreground mb-6">
+          Get in touch to ask about availability at Villa Sungai and Villa Kailash, or schedule a viewing.
+        </p>
+        <a
+          href="/inquire-now"
+          class="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
+        >
+          Inquire Now
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

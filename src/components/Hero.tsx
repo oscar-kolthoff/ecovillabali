@@ -8,7 +8,7 @@ interface HeroProps {
 
 export const villaData = {
   sungai: {
-    image: '/images/villa-sungai-hero.jpg',
+    image: '/images/villa-sungai-hero.webp',
     width: 1600,
     height: 1067,
     name: 'Villa Sungai',
@@ -16,7 +16,7 @@ export const villaData = {
     description: "Villa Sungai is a sustainable 3 bedroom villa near Green School Bali, located in Eco Village Sibang just an 8 minute walk from campus. Designed for families relocating to Bali, it offers modern comfort, natural surroundings and a thriving international community.",
   },
   kailash: {
-    image: '/images/villa-kailash-hero.jpg',
+    image: '/images/villa-kailash-hero.webp',
     width: 1600,
     height: 1066,
     name: 'Villa Kailash',

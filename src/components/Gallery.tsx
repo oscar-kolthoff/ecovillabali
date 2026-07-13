@@ -7,7 +7,7 @@ export default function Gallery() {
 
   const galleryImages = [
     {
-      src: "/images/villa-sungai-hero.jpg",
+      src: "/images/villa-sungai-hero.webp",
       width: 1600,
       height: 1067,
       alt: "Villa Sungai Exterior",
@@ -15,7 +15,7 @@ export default function Gallery() {
       desc: "The villa nestled in lush jungle with private natural pool and river views"
     },
     {
-      src: "/images/VS2.jpg",
+      src: "/images/VS2.webp",
       width: 2048,
       height: 1366,
       alt: "Villa Main Structure",
@@ -23,7 +23,7 @@ export default function Gallery() {
       desc: "Beautiful bamboo and teak construction with thatched roof nestled in nature"
     },
     {
-      src: "/images/villa-interior.jpg",
+      src: "/images/villa-interior.webp",
       width: 2048,
       height: 1366,
       alt: "Living Space",
@@ -31,7 +31,7 @@ export default function Gallery() {
       desc: "Spacious indoor-outdoor living space with hanging chairs and jungle views"
     },
     {
-      src: "/images/VS3.jpg",
+      src: "/images/VS3.webp",
       width: 2048,
       height: 1366,
       alt: "Main Living Room",
@@ -39,7 +39,7 @@ export default function Gallery() {
       desc: "Elegant living space with hanging chairs, sofa, and open design with pool views"
     },
     {
-      src: "/images/villa-kitchen.jpg",
+      src: "/images/villa-kitchen.webp",
       width: 2048,
       height: 1366,
       alt: "Kitchen & Dining",
@@ -47,7 +47,7 @@ export default function Gallery() {
       desc: "Modern open-plan kitchen with teak beams, dining area, and large bifold doors"
     },
     {
-      src: "/images/VS5.jpg",
+      src: "/images/VS5.webp",
       width: 2048,
       height: 1366,
       alt: "Covered Deck with Pool",
@@ -55,7 +55,7 @@ export default function Gallery() {
       desc: "Spacious covered deck with hanging chairs overlooking the natural pool"
     },
     {
-      src: "/images/VS6.jpg",
+      src: "/images/VS6.webp",
       width: 2048,
       height: 1366,
       alt: "Kitchen & Dining Area",
@@ -63,7 +63,7 @@ export default function Gallery() {
       desc: "Well-equipped kitchen with modern appliances, dining table, and teak architecture"
     },
     {
-      src: "/images/villa-bathroom.jpg",
+      src: "/images/villa-bathroom.webp",
       width: 2048,
       height: 1366,
       alt: "Spa-like Bathroom",
@@ -71,7 +71,7 @@ export default function Gallery() {
       desc: "Luxurious primary bathroom with soaking tub, teak details, and spa-like ambiance"
     },
     {
-      src: "/images/VS8.jpg",
+      src: "/images/VS8.webp",
       width: 2048,
       height: 1366,
       alt: "Bedroom",
@@ -79,7 +79,7 @@ export default function Gallery() {
       desc: "Luxurious bedroom with canopy bed and balcony with a view to the lush village"
     },
     {
-      src: "/images/VS9.jpg",
+      src: "/images/VS9.webp",
       width: 2048,
       height: 1366,
       alt: "TV Room/Office Space",
@@ -87,7 +87,7 @@ export default function Gallery() {
       desc: "Comfortable TV room/office space which can be used as guest bedroom as well"
     },
     {
-      src: "/images/VS10.jpg",
+      src: "/images/VS10.webp",
       width: 2048,
       height: 1366,
       alt: "Bedroom",
@@ -95,7 +95,7 @@ export default function Gallery() {
       desc: "Beautiful bedroom with cosy single bed and extra bed underneath"
     },
     {
-      src: "/images/VS12.jpg",
+      src: "/images/VS12.webp",
       width: 2048,
       height: 1366,
       alt: "Loft Bedroom",
@@ -103,7 +103,7 @@ export default function Gallery() {
       desc: "Cozy loft bedroom with exposed teak beams and unique architectural design"
     },
     {
-      src: "/images/BPS08156.jpg",
+      src: "/images/BPS08156.webp",
       width: 1365,
       height: 2048,
       alt: "Architectural Details",
@@ -111,7 +111,7 @@ export default function Gallery() {
       desc: "Stunning architectural details showcasing the craftsmanship of teak and bamboo construction"
     },
     {
-      src: "/images/BPS08144.jpg",
+      src: "/images/BPS08144.webp",
       width: 2048,
       height: 1365,
       alt: "Covered Outdoor Space",
@@ -119,7 +119,7 @@ export default function Gallery() {
       desc: "Serene covered outdoor space with thatched roof overlooking the lush jungle landscape"
     },
     {
-      src: "/images/BPS08035.jpg",
+      src: "/images/BPS08035.webp",
       width: 2048,
       height: 1365,
       alt: "Master Suite",
@@ -127,7 +127,7 @@ export default function Gallery() {
       desc: "Luxurious master suite with canopy bed and abundant natural light"
     },
     {
-      src: "/images/BPS08045.jpg",
+      src: "/images/BPS08045.webp",
       width: 2048,
       height: 1365,
       alt: "Bathroom",

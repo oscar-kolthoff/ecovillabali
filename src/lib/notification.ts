@@ -1,3 +1,4 @@
+import { Resend } from "resend";
 import { ENV } from "./env";
 
 export type NotificationPayload = {
@@ -11,11 +12,6 @@ const CONTENT_MAX_LENGTH = 20000;
 const trimValue = (value: string): string => value.trim();
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === "string" && value.trim().length > 0;
-
-const buildEndpointUrl = (baseUrl: string): string => {
-  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-  return new URL("webdevtoken.v1.WebDevService/SendNotification", normalizedBase).toString();
-};
 
 class NotificationValidationError extends Error {}
 
@@ -44,47 +40,45 @@ const validatePayload = (input: NotificationPayload): NotificationPayload => {
   return { title, content };
 };
 
+let _resend: Resend | null = null;
+function getResend() {
+  if (!_resend && ENV.resendApiKey) {
+    _resend = new Resend(ENV.resendApiKey);
+  }
+  return _resend;
+}
+
 /**
- * Dispatches a project-owner notification through the Manus Notification
- * Service. Returns `false` (rather than throwing) when the upstream service
- * is unreachable or unconfigured, so callers can still confirm the inquiry
- * was saved even if the push notification didn't go out.
+ * Emails the site owner about a new inquiry via Resend. Returns `false`
+ * (rather than throwing) when Resend isn't configured or the send fails, so
+ * callers can still confirm the inquiry was saved even if the email didn't
+ * go out.
  */
 export async function notifyOwner(payload: NotificationPayload): Promise<boolean> {
   const { title, content } = validatePayload(payload);
 
-  if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
-    console.warn("[Notification] Service not configured; skipping owner notification.");
+  const resend = getResend();
+  if (!resend) {
+    console.warn("[Notification] RESEND_API_KEY not configured; skipping owner email.");
     return false;
   }
 
-  const endpoint = buildEndpointUrl(ENV.forgeApiUrl);
-
   try {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        authorization: `Bearer ${ENV.forgeApiKey}`,
-        "content-type": "application/json",
-        "connect-protocol-version": "1",
-      },
-      body: JSON.stringify({ title, content }),
+    const { error } = await resend.emails.send({
+      from: ENV.notificationFromEmail,
+      to: ENV.notificationToEmail,
+      subject: title,
+      text: content,
     });
 
-    if (!response.ok) {
-      const detail = await response.text().catch(() => "");
-      console.warn(
-        `[Notification] Failed to notify owner (${response.status} ${response.statusText})${
-          detail ? `: ${detail}` : ""
-        }`
-      );
+    if (error) {
+      console.warn("[Notification] Resend rejected the email:", error);
       return false;
     }
 
     return true;
   } catch (error) {
-    console.warn("[Notification] Error calling notification service:", error);
+    console.warn("[Notification] Error sending email via Resend:", error);
     return false;
   }
 }

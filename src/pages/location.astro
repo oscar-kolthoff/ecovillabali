@@ -7,11 +7,12 @@ const title = "Location: Eco Village Sibang Near Green School Bali";
 const description =
   "Eco Village Sibang sits an 8-minute walk from Green School Bali, 25 minutes from Ubud, and along the Ayung River. See travel times and what makes this location rare.";
 const breadcrumbSchema = buildBreadcrumbSchema("Location", "/location");
+const cspNonce = Astro.locals.cspNonce;
 ---
 
 <Layout title={title} description={description}>
   <Fragment slot="head">
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
 
   <div class="pt-8">

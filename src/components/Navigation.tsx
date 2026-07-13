@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Location", href: "/location" },
   { label: "Lifestyle", href: "/lifestyle" },
   { label: "Green School Bali", href: "/green-school-villa-bali" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Inquire Now", href: "/inquire-now" },
 ];
@@ -27,7 +28,7 @@ export default function Navigation({ currentPath }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const shouldForceScrolled = alwaysScrolledPages.includes(currentPath);
+  const shouldForceScrolled = alwaysScrolledPages.includes(currentPath) || currentPath.startsWith("/blog");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,14 +42,14 @@ export default function Navigation({ currentPath }: NavigationProps) {
 
   // Highlight only the active page's link in yellow/orange; all others follow
   // the readable default (white over the hero, dark once scrolled).
+  const isActive = (href: string) => currentPath === href || (href === "/blog" && currentPath.startsWith("/blog"));
   const linkColor = (href: string) => {
-    if (currentPath === href) return displayScrolled ? "text-accent" : "text-secondary";
+    if (isActive(href)) return displayScrolled ? "text-accent" : "text-secondary";
     return displayScrolled
       ? "text-foreground/80 hover:text-accent"
       : "text-white/90 hover:text-accent";
   };
-  const mobileLinkColor = (href: string) =>
-    currentPath === href ? "text-accent" : "text-foreground";
+  const mobileLinkColor = (href: string) => (isActive(href) ? "text-accent" : "text-foreground");
 
   return (
     <nav

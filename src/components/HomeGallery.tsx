@@ -9,15 +9,15 @@ import { Button } from "@/components/ui/button";
  * decision flow moving.
  */
 const images = [
-  { src: "/images/villa-sungai-hero.jpg", villa: "Villa Sungai", alt: "Villa Sungai exterior with natural pool and river views", width: 1600, height: 1067 },
+  { src: "/images/villa-sungai-hero.webp", villa: "Villa Sungai", alt: "Villa Sungai exterior with natural pool and river views", width: 1600, height: 1067 },
   { src: "/images/villa-kailash/01.poolandsundeck.jpg", villa: "Villa Kailash", alt: "Villa Kailash pool and sundeck", width: 2048, height: 1365 },
-  { src: "/images/villa-interior.jpg", villa: "Villa Sungai", alt: "Villa Sungai indoor-outdoor living area", width: 2048, height: 1366 },
+  { src: "/images/villa-interior.webp", villa: "Villa Sungai", alt: "Villa Sungai indoor-outdoor living area", width: 2048, height: 1366 },
   { src: "/images/villa-kailash/02.Openliving1.jpg", villa: "Villa Kailash", alt: "Villa Kailash open living space", width: 2048, height: 1365 },
-  { src: "/images/villa-kitchen.jpg", villa: "Villa Sungai", alt: "Villa Sungai open kitchen and dining", width: 2048, height: 1366 },
+  { src: "/images/villa-kitchen.webp", villa: "Villa Sungai", alt: "Villa Sungai open kitchen and dining", width: 2048, height: 1366 },
   { src: "/images/villa-kailash/03.MasterBedroom1.jpg", villa: "Villa Kailash", alt: "Villa Kailash master bedroom", width: 2048, height: 1365 },
-  { src: "/images/VS5.jpg", villa: "Villa Sungai", alt: "Villa Sungai covered deck overlooking the pool", width: 2048, height: 1366 },
+  { src: "/images/VS5.webp", villa: "Villa Sungai", alt: "Villa Sungai covered deck overlooking the pool", width: 2048, height: 1366 },
   { src: "/images/villa-kailash/01.Overviewvilla2.jpg", villa: "Villa Kailash", alt: "Villa Kailash exterior surrounded by greenery", width: 2048, height: 1365 },
-  { src: "/images/BPS08144.jpg", villa: "Villa Sungai", alt: "Villa Sungai covered balcony with jungle views", width: 2048, height: 1365 },
+  { src: "/images/BPS08144.webp", villa: "Villa Sungai", alt: "Villa Sungai covered balcony with jungle views", width: 2048, height: 1365 },
   { src: "/images/villa-kailash/04.MasterBathroom1.jpg", villa: "Villa Kailash", alt: "Villa Kailash spa-like master bathroom", width: 2048, height: 1365 },
 ];
 

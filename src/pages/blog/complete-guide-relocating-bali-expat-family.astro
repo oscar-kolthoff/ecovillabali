@@ -1,0 +1,421 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FAQAccordion from "@/components/FAQAccordion";
+import { buildBreadcrumbSchema, buildArticleSchema, buildFaqSchema } from "@/lib/schema";
+
+const title = "Relocating to Bali for Green School Bali | Family Guide 2026";
+const description =
+  "Thinking about relocating to Bali for Green School? Discover where families live, daily life near campus, housing options and why Eco Village Sibang has become a popular choice.";
+const image = "https://ecovillabali.com/images/blog-green-school-campus.webp";
+const path = "/blog/complete-guide-relocating-bali-expat-family";
+
+const neighborhoods = [
+  {
+    name: "Eco Village Sibang",
+    distance: "700 meters",
+    commute: "8 min walk/bike",
+    lifestyle: "Sustainable, family-focused",
+    community: "Strong Green School community",
+    bestFor: "Families prioritizing convenience & community",
+  },
+  {
+    name: "Sayan",
+    distance: "8 km",
+    commute: "15-20 min drive",
+    lifestyle: "Upscale, luxury-oriented",
+    community: "Mix of families and entrepreneurs",
+    bestFor: "Families seeking premium amenities",
+  },
+  {
+    name: "Ubud",
+    distance: "15 km",
+    commute: "25-35 min drive",
+    lifestyle: "Cultural, artistic, bohemian",
+    community: "Creative professionals, artists",
+    bestFor: "Families wanting cultural immersion",
+  },
+  {
+    name: "Canggu",
+    distance: "25 km",
+    commute: "45-60 min drive",
+    lifestyle: "Beach lifestyle, digital nomad hub",
+    community: "International, younger demographic",
+    bestFor: "Families seeking beach access",
+  },
+];
+
+const faqs = [
+  {
+    question: "Do most families rent or buy when they first arrive?",
+    answer:
+      "Most families new to Bali rent initially, which provides flexibility to explore neighbourhoods and adjust to life before making long-term commitments. Rental villas in Eco Village Sibang range from $3,000 to $4,000+ monthly. Families planning to stay for multiple years more often purchase property.",
+  },
+  {
+    question: "What is the community like in Eco Village Sibang?",
+    answer:
+      "Eco Village Sibang has a strong community of Green School families who share values around sustainability, education, and family life. Regular community events and gatherings help strengthen connections between residents.",
+  },
+  {
+    question: "What is the average cost of living in Eco Village Sibang?",
+    answer:
+      "Rental villas in Eco Village Sibang typically range from $3,000 to $4,000+ monthly depending on size and features. Some families eventually purchase property after staying for multiple years.",
+  },
+  {
+    question: "Is Eco Village Sibang safe for children?",
+    answer:
+      "Yes. The neighborhood is pedestrian-safe with quiet roads and a strong culture of looking out for each other's children. Many children walk or cycle to school independently.",
+  },
+  {
+    question: "What makes Eco Village Sibang sustainable?",
+    answer:
+      "Homes feature natural materials, reclaimed timber, bamboo elements, passive cooling design, thick earthen walls, natural landscaping, and water-conscious systems. The village is also designed around walkability rather than car dependency.",
+  },
+  {
+    question: "Can I rent before buying in Eco Village Sibang?",
+    answer:
+      "Yes. Most families new to Bali rent initially to explore neighborhoods and adjust to life in Bali before making long-term property commitments.",
+  },
+  {
+    question: "What schools are near Eco Village Sibang besides Green School?",
+    answer:
+      "Green School Bali is the primary international school in the immediate area. Other international options including Bali International School are located further away in different parts of Ubud.",
+  },
+  {
+    question: "How do I get to other parts of Bali from Eco Village Sibang?",
+    answer:
+      "While Sibang is walkable to Green School, accessing other parts of Bali typically requires a car or scooter. The drive to beaches or other areas can range from 30 minutes to over an hour depending on traffic.",
+  },
+];
+
+const articleSchema = buildArticleSchema({
+  headline: "Relocating to Bali for Green School? What Families Should Know Before Making the Move",
+  description,
+  path,
+  image,
+  datePublished: "2026-06-01",
+});
+const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
+const faqSchema = buildFaqSchema(faqs);
+const cspNonce = Astro.locals.cspNonce;
+---
+
+<Layout title={title} description={description} image={image}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <div class="container max-w-3xl mx-auto px-4 py-16">
+      <a href="/blog" class="text-sm text-muted-foreground hover:text-accent transition-colors mb-8 inline-block">
+        &larr; Back to Blog
+      </a>
+
+      <header class="mb-8">
+        <div class="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+          <span>June 2026</span>
+          <span>&middot;</span>
+          <span>Relocation</span>
+          <span>&middot;</span>
+          <span>13 min read</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
+          Relocating to Bali for Green School? What Families Should Know Before Making the Move
+        </h1>
+        <p class="text-muted-foreground">By Eco Villa Bali</p>
+      </header>
+
+      <img
+        src="/images/blog-green-school-campus.webp"
+        alt="Green School Bali Campus"
+        width="1200"
+        height="800"
+        loading="eager"
+        decoding="async"
+        class="w-full max-w-2xl rounded-lg mx-auto mb-8"
+      />
+
+      <div class="space-y-5 text-foreground/90 leading-relaxed">
+        <p>For many families, Green School Bali is the reason Bali first appears on the map.</p>
+
+        <p>
+          What often starts as curiosity about an alternative education quickly becomes a much bigger question:
+          "What would our family life actually look like if we moved to Bali?"
+        </p>
+
+        <p>
+          While choosing the right school is an important part of the journey, finding the right place to live is
+          equally important. The neighbourhood you choose will shape your daily routine, your children's
+          friendships, your sense of community and ultimately your experience of living in Bali.
+        </p>
+
+        <p>
+          Over the past decade, a growing number of international families have chosen to build their lives around
+          the Green School community. Some settle in Ubud, others in Sayan or Canggu. Increasingly, families are
+          choosing to live closer to the school itself, allowing children to spend less time in traffic and more
+          time enjoying the unique lifestyle that attracted them to Bali in the first place.
+        </p>
+
+        <p>
+          In this guide, we'll explore what it's really like to relocate to Bali for Green School, where families
+          choose to live and why Eco Village Sibang has become one of the most sought-after communities for families
+          looking to combine sustainability, convenience and connection.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Why Families Move to Bali for Green School</h2>
+
+        <p>
+          Green School Bali isn't just another international school: it represents a fundamentally different
+          approach to education that resonates deeply with families seeking an alternative to conventional
+          schooling.
+        </p>
+
+        <p>
+          The school's philosophy centers on sustainability, environmental stewardship, and experiential learning.
+          Rather than confining education to classrooms, Green School integrates nature into every aspect of the
+          curriculum. Students learn mathematics through agricultural projects, study ecology by managing the
+          school's organic gardens, and develop leadership skills through real-world environmental initiatives. For
+          many families, this approach aligns perfectly with their own values around education, sustainability, and
+          raising globally-minded children.
+        </p>
+
+        <img
+          src="/images/blog-green-school-outdoor-learning.webp"
+          alt="Green School Outdoor Learning"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+          class="w-full max-w-2xl rounded-lg mx-auto my-8"
+        />
+
+        <p>
+          What makes Green School particularly compelling is the outdoor learning environment. The campus itself is
+          a teaching tool: built largely from bamboo, powered by renewable energy, and designed to minimize
+          environmental impact. Children don't just learn about sustainability; they live it daily. This
+          integration of education and lifestyle creates a powerful learning experience that extends far beyond
+          traditional academics.
+        </p>
+
+        <p>
+          The international community at Green School is another significant draw. Families come from over 50
+          countries, creating a genuinely multicultural environment where children develop cross-cultural
+          understanding naturally. Parents often find that the school community becomes their social foundation in
+          Bali, providing friendship, support, and shared values that make relocation feel less like an adventure
+          into the unknown and more like joining an established, welcoming community.
+        </p>
+
+        <p>
+          For many families, the decision to relocate for Green School ultimately reflects a deeper choice about
+          lifestyle. They're not just seeking a better school; they're seeking a different way of living, one that
+          prioritizes nature, sustainability, community connection, and educational philosophy over convenience and
+          familiarity.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Where Do Green School Families Live?</h2>
+
+        <p>
+          Green School Bali's central location in Ubud makes it accessible from several neighborhoods, each offering
+          distinct lifestyle experiences. Understanding where families choose to live and why they make these
+          choices can help guide your own decision.
+        </p>
+
+        <div class="overflow-x-auto my-6">
+          <table class="w-full border-collapse border border-border text-sm">
+            <thead class="bg-muted/50">
+              <tr class="border-b border-border">
+                <th class="px-4 py-2 text-left font-semibold">Neighborhood</th>
+                <th class="px-4 py-2 text-left font-semibold">Distance</th>
+                <th class="px-4 py-2 text-left font-semibold">Commute</th>
+                <th class="px-4 py-2 text-left font-semibold">Lifestyle</th>
+                <th class="px-4 py-2 text-left font-semibold">Community</th>
+                <th class="px-4 py-2 text-left font-semibold">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              {neighborhoods.map((n) => (
+                <tr class="border-b border-border">
+                  <td class="px-4 py-2 font-semibold whitespace-nowrap">{n.name}</td>
+                  <td class="px-4 py-2 whitespace-nowrap">{n.distance}</td>
+                  <td class="px-4 py-2 whitespace-nowrap">{n.commute}</td>
+                  <td class="px-4 py-2">{n.lifestyle}</td>
+                  <td class="px-4 py-2">{n.community}</td>
+                  <td class="px-4 py-2">{n.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Eco Village Sibang: The Heart of the Green School Community</h2>
+
+        <p>
+          Eco Village Sibang has emerged as the premier choice for families relocating to Bali for Green School.
+          Located just an 8-minute walk from campus, Sibang offers something increasingly rare: a genuinely
+          sustainable community that doesn't sacrifice comfort or convenience.
+        </p>
+
+        <p>
+          The neighborhood represents a thoughtful approach to community design. Rather than sprawling development,
+          Sibang is intentionally compact, with homes designed using sustainable principles. Natural materials like
+          bamboo and reclaimed teak, passive cooling systems, rainwater harvesting, and solar power are standard
+          features. More importantly, sustainability isn't imposed from above; it emerges from the shared values of
+          residents who chose to live there specifically because of these practices.
+        </p>
+
+        <p>
+          The community atmosphere is one of Sibang's greatest strengths. Most residents have children at Green
+          School, creating a built-in network of families at similar life stages. Parents know each other not just
+          from school pickup but from daily walks through the neighborhood. Children develop friendships that extend
+          beyond the classroom. Community events, sustainability workshops, dinners, children's activities, emerge
+          organically from shared values.
+        </p>
+
+        <p>
+          For families new to Bali, Sibang offers the smoothest transition. The walkability to school eliminates
+          daily commutes. Children can walk or cycle to campus safely. The neighborhood becomes an extension of
+          daily family life rather than a separate destination.
+        </p>
+
+        <img
+          src="/images/blog-children-walking-sibang.webp"
+          alt="Children walking in Eco Village Sibang"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+          class="w-full max-w-2xl rounded-lg mx-auto my-8"
+        />
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Sayan: Luxury and Nature Combined</h2>
+
+        <p>
+          Sayan, located about 15 minutes from Green School, attracts families seeking a more upscale lifestyle
+          while maintaining proximity to the school. The area is known for its stunning rice terraces, luxury
+          resorts, and high-end restaurants. Sayan offers a more exclusive feel while still being part of the Green
+          School community.
+        </p>
+
+        <p>
+          Families in Sayan typically have higher budgets and are drawn to the area's natural beauty and
+          sophisticated amenities. The neighborhood is popular with entrepreneurs and digital nomads who appreciate
+          the balance of work-friendly infrastructure and inspiring natural surroundings.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Ubud: Cultural Immersion and Artistic Community</h2>
+
+        <p>
+          Ubud, about 20-25 minutes from Green School, appeals to families seeking cultural immersion and artistic
+          expression. The area is famous for its art galleries, traditional crafts, and vibrant cultural scene. Ubud
+          attracts creative families and those interested in deep cultural engagement with Balinese traditions.
+        </p>
+
+        <p>
+          While slightly further from school, many families appreciate Ubud's unique energy and the opportunity to
+          raise children in a culturally rich environment. The area offers excellent restaurants, wellness centers,
+          and community spaces that foster creativity and connection.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Penestanan and Campuhan: Artistic and Bohemian</h2>
+
+        <p>
+          These neighborhoods near Ubud appeal to creative families and artists. They offer a more bohemian
+          lifestyle with lower costs than Sayan, while maintaining access to Ubud's cultural offerings. These areas
+          are popular with families who prioritize artistic expression and community over proximity to school.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Choosing Your Neighborhood</h2>
+
+        <p>
+          When selecting where to live as a Green School family, consider these factors: proximity to school
+          (8-minute walk in Sibang is ideal for daily convenience), community culture (Sibang's sustainability focus
+          vs. Ubud's artistic vibe), budget (Sibang and Sayan command premium prices), and lifestyle preferences
+          (urban convenience vs. natural immersion).
+        </p>
+
+        <p>
+          Most families find that living in Eco Village Sibang provides the best balance of convenience, community,
+          and lifestyle alignment with Green School values. However, the choice ultimately depends on your family's
+          unique priorities and preferences.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Finding the Right Home Near Green School</h2>
+
+        <p>Once you've decided on a neighborhood, the next step is finding a home that matches your family's needs and budget.</p>
+
+        <p>
+          Most families new to Bali rent initially, which provides flexibility to explore neighborhoods and adjust
+          to life in Bali before making long-term commitments. Rental villas in Eco Village Sibang range from
+          $3,000 to $4,000+ monthly depending on size and features. Some families, particularly those planning to
+          stay multiple years, often purchase property. Examples like
+          <a href="/villa-sungai" class="text-primary underline hover:text-accent">Villa Sungai</a> and
+          <a href="/villa-kailash" class="text-primary underline hover:text-accent">Villa Kailash</a>
+          demonstrate the quality of sustainable homes available in Eco Village Sibang, thoughtfully designed
+          properties that combine modern comfort with environmental responsibility.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+          <a href="/villa-kailash">
+            <img
+              src="/images/blog-villa-kailash.webp"
+              alt="Villa Kailash"
+              width="1086"
+              height="724"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto rounded-lg"
+            />
+          </a>
+          <a href="/villa-sungai">
+            <img
+              src="/images/blog-villa-sungai.webp"
+              alt="Villa Sungai"
+              width="1086"
+              height="724"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto rounded-lg"
+            />
+          </a>
+        </div>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Final Thoughts</h2>
+
+        <p>
+          For many families, relocating to Bali begins with Green School, but ultimately becomes a decision about
+          lifestyle, community and the environment in which their children will grow up.
+        </p>
+
+        <p>
+          While every family's priorities are different, living close to school often creates a more connected and
+          enjoyable experience. Areas such as Eco Village Sibang, Sayan and Ubud each offer unique advantages, and
+          the right choice depends on the lifestyle you want to create.
+        </p>
+
+        <p>
+          Taking the time to explore neighbourhoods, meet other families and experience daily life around Green
+          School is often the best way to determine what feels like home.
+        </p>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-border">
+        <h2 class="font-serif text-2xl font-bold text-primary mb-8">Frequently Asked Questions</h2>
+        <FAQAccordion faqs={faqs} idPrefix="relocating-faq" client:load />
+      </div>
+
+      <div class="mt-16 p-8 bg-card border border-border rounded-lg text-center">
+        <h3 class="font-serif text-2xl font-semibold text-primary mb-3">Considering a move to Eco Village Sibang?</h3>
+        <p class="text-muted-foreground mb-6">
+          Get in touch to ask about availability at Villa Sungai and Villa Kailash, or schedule a viewing.
+        </p>
+        <a
+          href="/inquire-now"
+          class="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
+        >
+          Inquire Now
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

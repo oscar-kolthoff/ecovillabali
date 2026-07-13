@@ -1,17 +1,62 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Lifestyle from "@/components/Lifestyle";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import FAQAccordion from "@/components/FAQAccordion";
+import { buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schema";
 
 const title = "Lifestyle: A Day in Eco Village Sibang";
 const description =
   "What daily life actually looks like in Eco Village Sibang: mornings walking to Green School, organic food, cultural immersion, and an international community of families.";
 const breadcrumbSchema = buildBreadcrumbSchema("Lifestyle", "/lifestyle");
+
+const weekParts = [
+  {
+    title: "Weekday Mornings",
+    description:
+      "Children walk or cycle to Green School through bamboo groves and rice paddies. Parents share coffee in shaded community spaces or settle into a home office before the day gets warm.",
+  },
+  {
+    title: "Weekday Afternoons",
+    description:
+      "School pickup doubles as a social moment. Many families tend a corner of the shared organic gardens or swap produce with neighbors on the walk home.",
+  },
+  {
+    title: "Evenings",
+    description:
+      "The pace slows into family time: dinner on an open deck, kids finishing homework within earshot of the jungle, and the kind of casual, cross-cultural friendships that only form when everyone chose the same unconventional life on purpose.",
+  },
+  {
+    title: "Weekends",
+    description:
+      "Balinese ceremonies and community gatherings punctuate the calendar, alongside day trips into Ubud for culture and dining, or simply staying local for river walks and quiet time in the jungle.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Eco Village Sibang hot and humid year-round?",
+    answer:
+      "Like most of Bali, Sibang has a warm, humid tropical climate with a wetter season from roughly November to March. Homes in the village use passive cooling and natural ventilation, so daily life doesn't depend on heavy air conditioning.",
+  },
+  {
+    question: "What language do families use day to day?",
+    answer:
+      "English is the practical common language among the international community, alongside Indonesian and Balinese spoken by local staff and neighbours. Many families pick up basic Indonesian phrases within their first few months.",
+  },
+  {
+    question: "Are there activities for children outside of Green School hours?",
+    answer:
+      "Yes. Community life extends beyond school hours with shared gardens, informal playdates within walking distance, and cultural activities like Balinese dance or ceremonies that families are welcome to join.",
+  },
+];
+const faqSchema = buildFaqSchema(faqs);
+const cspNonce = Astro.locals.cspNonce;
 ---
 
 <Layout title={title} description={description}>
   <Fragment slot="head">
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <div class="pt-8">
@@ -27,5 +72,58 @@ const breadcrumbSchema = buildBreadcrumbSchema("Lifestyle", "/lifestyle");
       </div>
     </section>
     <Lifestyle client:visible />
+
+    <section class="py-24 bg-muted/20">
+      <div class="container max-w-4xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-accent font-medium tracking-widest uppercase text-sm">The Rhythm</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mt-3 mb-6">
+            A Week in Eco Village Sibang
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {weekParts.map((part) => (
+            <div class="bg-card border border-border rounded-2xl p-6">
+              <h3 class="font-serif text-lg font-bold text-primary mb-2">{part.title}</h3>
+              <p class="text-muted-foreground text-sm leading-relaxed">{part.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="container max-w-3xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary text-center mb-8">
+          Frequently Asked Questions
+        </h2>
+        <FAQAccordion faqs={faqs} idPrefix="lifestyle-faq" client:visible />
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="container max-w-2xl mx-auto text-center">
+        <h3 class="font-serif text-2xl md:text-3xl font-bold text-primary mb-4">
+          See Where This Lifestyle Happens
+        </h3>
+        <p class="text-muted-foreground text-lg leading-relaxed mb-8">
+          Villa Sungai and Villa Kailash are both available now, an 8-minute walk from Green School Bali.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/villa-sungai"
+            class="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
+          >
+            View Villa Sungai
+          </a>
+          <a
+            href="/villa-kailash"
+            class="inline-block px-8 py-3 border border-primary/30 text-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            View Villa Kailash
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>

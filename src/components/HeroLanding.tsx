@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const HERO_IMAGE = "/images/villa-sungai-hero.jpg";
+export const HERO_IMAGE = "/images/villa-sungai-hero.webp";
 
 /**
  * Landing hero for the homepage. Introduces BOTH villas equally with two

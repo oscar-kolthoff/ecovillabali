@@ -19,7 +19,7 @@ export default function Lifestyle() {
             {
               title: "Organic Living",
               desc: "Access to fresh, organic produce from local permaculture gardens and community farms.",
-              image: "/images/organic-living.jpg",
+              image: "/images/organic-living.webp",
               width: 2500,
               height: 1667,
             },

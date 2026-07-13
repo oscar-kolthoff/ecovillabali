@@ -3,13 +3,15 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero";
 import VillaDetails from "@/components/VillaDetails";
 import Gallery from "@/components/Gallery";
+import VillaHighlights, { villaHighlightsData } from "@/components/VillaHighlights";
 import Contact from "@/components/Contact";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import MeetTheOwners from "@/components/MeetTheOwners";
+import { buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schema";
 
 const title = "Villa Sungai: Eco Family Villa Near Green School Bali";
 const description =
   "Villa Sungai is a sustainable 3-bedroom eco family home in Sibang, an 8-minute walk from Green School Bali, with a natural pool and riverside setting.";
-const image = "https://ecovillabali.com/images/villa-sungai-hero.jpg";
+const image = "https://ecovillabali.com/images/villa-sungai-hero.webp";
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -22,17 +24,22 @@ const productSchema = {
   category: "Eco family villa for sale",
 };
 const breadcrumbSchema = buildBreadcrumbSchema("Villa Sungai", "/villa-sungai");
+const faqSchema = buildFaqSchema(villaHighlightsData.sungai.faqs);
+const cspNonce = Astro.locals.cspNonce;
 ---
 
 <Layout title={title} description={description} image={image} type="product">
   <Fragment slot="head">
-    <link rel="preload" as="image" href="/images/villa-sungai-hero.jpg" fetchpriority="high" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+    <link rel="preload" as="image" href="/images/villa-sungai-hero.webp" fetchpriority="high" />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <Hero villa="sungai" client:load />
   <VillaDetails villa="sungai" client:visible />
   <Gallery client:visible />
+  <VillaHighlights villa="sungai" client:visible />
   <Contact villa="sungai" client:visible />
+  <MeetTheOwners client:visible />
 </Layout>

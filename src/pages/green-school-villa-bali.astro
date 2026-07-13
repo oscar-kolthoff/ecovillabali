@@ -64,7 +64,7 @@ const whyFamiliesChoose = [
 
 const keyFeatures = [
   "Sustainable construction using natural materials",
-  "Proximity to Green School Bali (typically 5-15 minutes)",
+  "8-minute walk to Green School Bali",
   "Access to international community network",
   "Private natural pools and outdoor living spaces",
   "Integration with organic food production",
@@ -72,12 +72,13 @@ const keyFeatures = [
   "Natural ventilation and passive cooling design",
   "Connection to walking trails and river zones"
 ];
+const cspNonce = Astro.locals.cspNonce;
 ---
 
 <Layout title={title} description={description}>
   <Fragment slot="head">
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
 
   {/* Hero Section */}
@@ -146,7 +147,7 @@ const keyFeatures = [
         <Card className="overflow-hidden border-border/50 hover:border-border transition-colors">
           <div class="aspect-video bg-muted flex items-center justify-center overflow-hidden">
             <img
-              src="/images/villa-sungai-hero.jpg"
+              src="/images/villa-sungai-hero.webp"
               alt="Villa Sungai"
               width={1600}
               height={1067}

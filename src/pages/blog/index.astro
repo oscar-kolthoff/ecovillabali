@@ -1,0 +1,81 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+const title = "Blog: Relocating to Bali & Life Near Green School";
+const description =
+  "Guides and insights on relocating to Bali for Green School, sustainable living in Eco Village Sibang, and what to expect from daily family life in Sibang Kaja.";
+const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
+
+const posts = [
+  {
+    slug: "complete-guide-relocating-bali-expat-family",
+    category: "Relocation",
+    title: "Relocating to Bali for Green School? What Families Should Know Before Making the Move",
+    excerpt:
+      "Everything you need to know about moving your family to Bali, from where Green School families choose to live to finding the right home once you arrive.",
+    date: "June 2026",
+    readTime: "13 min read",
+  },
+  {
+    slug: "sustainable-living-bali-eco-village-sibang",
+    category: "Sustainability",
+    title: "Sustainable Living Near Green School Bali: Inside Eco Village Sibang",
+    excerpt:
+      "What sustainable living actually looks like day to day in Eco Village Sibang, beyond bamboo architecture and solar panels: community, walkability, and a slower pace of life.",
+    date: "June 2026",
+    readTime: "11 min read",
+  },
+];
+const cspNonce = Astro.locals.cspNonce;
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <section class="py-16 md:py-20">
+      <div class="container max-w-3xl mx-auto text-center">
+        <span class="text-accent font-medium tracking-widest uppercase text-sm">Resources & Insights</span>
+        <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mt-3 mb-6">
+          Guides for Families Relocating to Bali
+        </h1>
+        <p class="text-muted-foreground text-lg leading-relaxed">
+          Discover guides, tips, and insights about relocating to Bali, living near Green School, and building your ideal family lifestyle in Eco Village Sibang.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="container max-w-4xl mx-auto px-4">
+        <div class="grid gap-8 md:grid-cols-2">
+          {posts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group block bg-card border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div class="p-8">
+                <span class="text-accent font-medium tracking-widest uppercase text-xs">
+                  {post.category}
+                </span>
+                <h2 class="font-serif text-xl font-semibold text-primary mt-3 mb-3 group-hover:text-accent transition-colors">
+                  {post.title}
+                </h2>
+                <p class="text-muted-foreground leading-relaxed mb-4">{post.excerpt}</p>
+                <div class="flex items-center gap-3 text-sm text-muted-foreground">
+                  <span>{post.date}</span>
+                  <span>&middot;</span>
+                  <span>Eco Villa Bali</span>
+                  <span>&middot;</span>
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

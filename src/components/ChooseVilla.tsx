@@ -8,7 +8,7 @@ import {
   Sofa,
   Footprints,
   Trees,
-  Sprout,
+  Sun,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -16,7 +16,7 @@ const villas = [
   {
     name: "Villa Sungai",
     href: "/villa-sungai",
-    image: "/images/villa-sungai-hero.jpg",
+    image: "/images/villa-sungai-hero.webp",
     tagline: "Riverside setting",
     taglineIcon: Waves,
     highlights: [
@@ -30,11 +30,11 @@ const villas = [
   {
     name: "Villa Kailash",
     href: "/villa-kailash",
-    image: "/images/villa-kailash-hero.jpg",
-    tagline: "Rice field views",
-    taglineIcon: Sprout,
+    image: "/images/villa-kailash-hero.webp",
+    tagline: "Light & spacious family house",
+    taglineIcon: Sun,
     highlights: [
-      { icon: Bed, label: "4 Bedrooms" },
+      { icon: Bed, label: "3 Bedrooms" },
       { icon: Bath, label: "3 Bathrooms" },
       { icon: Trees, label: "Private pool" },
       { icon: ChefHat, label: "Open kitchen" },

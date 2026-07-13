@@ -56,12 +56,13 @@ const faqSchema = {
   })),
 };
 const breadcrumbSchema = buildBreadcrumbSchema("FAQ", "/faq");
+const cspNonce = Astro.locals.cspNonce;
 ---
 
 <Layout title={title} description={description}>
   <Fragment slot="head">
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
 
   <div class="pt-8">

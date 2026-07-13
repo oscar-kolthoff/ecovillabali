@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "@/styles/global.css";
 
 const SITE_URL = "https://ecovillabali.com";
-const DEFAULT_IMAGE = `${SITE_URL}/images/villa-sungai-hero.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/images/villa-sungai-hero.webp`;
 
 interface Props {
   title: string;
@@ -19,13 +19,14 @@ interface Props {
 
 const { title, description, image = DEFAULT_IMAGE, type = "website" } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
+const cspNonce = Astro.locals.cspNonce as string | undefined;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -41,7 +42,7 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "Eco Villa Bali",
@@ -49,7 +50,7 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
       description: "Eco Villa Bali sells two sustainable family villas, Villa Sungai and Villa Kailash, within an 8-minute walk of Green School Bali in Eco Village Sibang.",
       founder: { "@type": "Person", name: "Oscar", description: "Owner of Eco Villa Bali, a former resident of Eco Village Sibang and former Green School Bali parent." },
     })} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Eco Villa Bali",
@@ -64,7 +65,7 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XW73MEVXWG"></script>
-    <script is:inline>
+    <script is:inline nonce={cspNonce}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());

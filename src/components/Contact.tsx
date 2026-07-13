@@ -7,9 +7,14 @@ import { toast } from "sonner";
 
 interface ContactProps {
   villa?: 'sungai' | 'kailash';
+  /** Optional image shown below the intro copy, in the left column next to the form. */
+  image?: { src: string; alt: string };
+  /** Render the heading as the page's <h1> (use only when this is the page's sole heading, e.g. /inquire-now). */
+  asH1?: boolean;
 }
 
-export default function Contact({ villa = 'sungai' }: ContactProps) {
+export default function Contact({ villa = 'sungai', image, asH1 = false }: ContactProps) {
+  const Heading = asH1 ? 'h1' : 'h2';
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -80,12 +85,23 @@ export default function Contact({ villa = 'sungai' }: ContactProps) {
               transition={{ duration: 0.6 }}
             >
               <span className="text-secondary font-medium tracking-widest uppercase text-sm">Inquire Now</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3 mb-6">
-                Request Availability & Details
-              </h2>
+              <Heading className="font-serif text-4xl md:text-5xl font-bold mt-3 mb-6">
+                Request Pricing & Availability
+              </Heading>
               <p className="text-primary-foreground/80 text-lg leading-relaxed mb-8">
                 Interested in Villa Sungai or Villa Kailash? Leave your details and I'll personally share availability, more information, and arrange a viewing if desired.
               </p>
+              {image && (
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  width={640}
+                  height={480}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto rounded-2xl"
+                />
+              )}
             </motion.div>
           </div>
 
