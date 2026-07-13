@@ -60,13 +60,28 @@ const cspNonce = Astro.locals.cspNonce as string | undefined;
     <!-- Page-specific structured data (FAQPage, Product, BreadcrumbList) -->
     <slot name="head" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XW73MEVXWG"></script>
+    <!-- Google tag (gtag.js): dataLayer is wired up immediately so early
+         gtag() calls queue correctly, but the ~72KB script itself is only
+         fetched on first user interaction (or after 5s for users who never
+         interact), keeping it off the critical path for LCP/INP. -->
     <script is:inline nonce={cspNonce}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-XW73MEVXWG');
+
+      function loadGTM() {
+        if (window.__gtmLoaded) return;
+        window.__gtmLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XW73MEVXWG';
+        document.head.appendChild(s);
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (evt) {
+        window.addEventListener(evt, loadGTM, { once: true, passive: true });
+      });
+      setTimeout(loadGTM, 5000);
     </script>
   </head>
 
