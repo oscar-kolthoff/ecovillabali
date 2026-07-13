@@ -21,6 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ecovillabali.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ecovillabali.com/location</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -38,6 +43,16 @@
   <url>
     <loc>https://ecovillabali.com/blog</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ecovillabali.com/blog/where-to-live-near-green-school-bali</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ecovillabali.com/blog/buying-property-bali-foreigner</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>

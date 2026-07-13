@@ -9,6 +9,24 @@ const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
 
 const posts = [
   {
+    slug: "where-to-live-near-green-school-bali",
+    category: "Choosing a Neighbourhood",
+    title: "Where to Live Near Green School Bali: Sibang, Sayan, Ubud or Canggu?",
+    excerpt:
+      "A quick decision guide to where Green School families live and how Eco Village Sibang, Sayan, Ubud, and Canggu compare on commute, lifestyle, and daily family life.",
+    date: "July 2026",
+    readTime: "7 min read",
+  },
+  {
+    slug: "buying-property-bali-foreigner",
+    category: "Buying in Bali",
+    title: "Buying Property in Bali as a Foreigner: A Guide for Green School Families",
+    excerpt:
+      "How foreigners can legally buy a villa in Bali: leasehold, Hak Pakai, and PT PMA explained, the risks of nominee deals, and a due-diligence checklist before you sign.",
+    date: "July 2026",
+    readTime: "9 min read",
+  },
+  {
     slug: "complete-guide-relocating-bali-expat-family",
     category: "Relocation",
     title: "Relocating to Bali for Green School? What Families Should Know Before Making the Move",
@@ -67,7 +85,7 @@ const cspNonce = Astro.locals.cspNonce;
                 <div class="flex items-center gap-3 text-sm text-muted-foreground">
                   <span>{post.date}</span>
                   <span>&middot;</span>
-                  <span>Eco Villa Bali</span>
+                  <span>Oscar Kolthoff</span>
                   <span>&middot;</span>
                   <span>{post.readTime}</span>
                 </div>

@@ -1,0 +1,116 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { buildBreadcrumbSchema, buildPersonSchema } from "@/lib/schema";
+import { buildWhatsAppUrl } from "@/lib/const";
+
+const title = "About the Owners: Oscar & Iris | Eco Villa Bali";
+const description =
+  "Meet Oscar and Iris, former residents of Eco Village Sibang and former Green School Bali parents who now sell their two eco villas directly, without an agency.";
+
+const SITE_URL = "https://ecovillabali.com";
+
+const oscarSchema = buildPersonSchema({
+  name: "Oscar Kolthoff",
+  description:
+    "Owner of Eco Villa Bali. Oscar lived in Eco Village Sibang for two years as a Green School Bali parent and now sells the family's two eco villas directly.",
+  sameAs: ["https://www.linkedin.com/in/oscarkolthoff/"],
+});
+// TODO(owner): add `sameAs` for Iris (e.g. LinkedIn/Instagram) when available.
+const irisSchema = buildPersonSchema({
+  name: "Iris Kolthoff",
+  description:
+    "Co-owner of Eco Villa Bali. Iris lived in Eco Village Sibang for two years as a Green School Bali parent.",
+});
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: title,
+  url: `${SITE_URL}/about`,
+  mainEntity: [oscarSchema, irisSchema],
+};
+const breadcrumbSchema = buildBreadcrumbSchema("About", "/about");
+const cspNonce = Astro.locals.cspNonce;
+---
+
+<Layout title={title} description={description} image={`${SITE_URL}/images/oscar-iris.webp`}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(aboutPageSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <article class="container max-w-3xl mx-auto px-4 py-16">
+      <header class="mb-10 text-center">
+        <span class="text-accent font-medium tracking-widest uppercase text-sm">From the Owners</span>
+        <h1 class="font-serif text-3xl md:text-5xl font-bold text-primary mt-3 mb-4">
+          Meet Oscar &amp; Iris Kolthoff
+        </h1>
+        <p class="text-muted-foreground text-lg max-w-xl mx-auto">
+          You are not buying through a broker. You are talking to the family who actually lived here.
+        </p>
+      </header>
+
+      <img
+        src="/images/oscar-iris.webp"
+        alt="Oscar and Iris at a community ceremony in Eco Village Sibang"
+        width="800"
+        height="857"
+        loading="eager"
+        decoding="async"
+        class="w-full max-w-md rounded-2xl mx-auto mb-12 shadow-md"
+      />
+
+      <div class="space-y-5 text-foreground/90 leading-relaxed">
+        <p>
+          For two years, Eco Village Sibang was home. Our children walked to Green School Bali every
+          morning, past the rice fields and along the same quiet lanes you would walk if this became your
+          home too. We were not visitors or investors passing through. We were part of the community, the
+          school runs, the ceremonies, the neighbours, the daily rhythm of village life.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Why we sell directly</h2>
+        <p>
+          When we decided to sell, we chose to do it ourselves rather than hand the villas to an agency.
+          It means a little more work for us, but it also means that when you reach out, you are speaking
+          with people who know every corner of these homes and the village around them, not a broker
+          reciting a listing. We can tell you what the light is like in the morning, which neighbours have
+          children the same age, and how long the walk to school really takes.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">
+          What we know that a listing cannot tell you
+        </h2>
+        <p>
+          Choosing where to live near Green School is a bigger decision than choosing a house. It shapes
+          your children's friendships, your commute, and your sense of belonging. Because we made that same
+          decision and lived with it, we are happy to talk openly about the trade-offs, not just the
+          highlights. Ask us anything. If one of the villas is not right for your family, we will tell you.
+        </p>
+
+        <div class="bg-card border border-border rounded-2xl p-8 my-12 text-center">
+          <h2 class="font-serif text-2xl font-bold text-primary mb-3">Talk to us directly</h2>
+          <p class="text-muted-foreground mb-6">
+            Questions about the villas, the village, or moving to Bali for Green School? Reach out and
+            you will hear back from Oscar personally.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/inquire-now"
+              class="rounded-full px-8 py-3 font-serif font-bold bg-accent text-accent-foreground hover:bg-accent/90 transition-all hover:scale-105"
+            >
+              Inquire Now
+            </a>
+            <a
+              href={buildWhatsAppUrl("Hi Oscar! I read your story and I'm interested in the eco villas near Green School Bali.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full px-8 py-3 font-serif font-bold border border-border text-primary hover:bg-muted transition-colors"
+            >
+              Message on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</Layout>

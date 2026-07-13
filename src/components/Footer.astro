@@ -1,6 +1,7 @@
 ---
 import { MapPin, MessageCircle } from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_DISPLAY } from "@/lib/const";
+import { PROPERTY_MAP_URL } from "@/lib/schema";
 
 const exploreLinks = [
   { label: "Villa Sungai", href: "/villa-sungai" },
@@ -8,6 +9,7 @@ const exploreLinks = [
   { label: "Location", href: "/location" },
   { label: "Lifestyle", href: "/lifestyle" },
   { label: "Villas Near Green School Bali", href: "/green-school-villa-bali" },
+  { label: "About the Owners", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Inquire Now", href: "/inquire-now" },
 ];
@@ -28,14 +30,19 @@ const exploreLinks = [
       <div class="space-y-6">
         <h4 class="font-serif text-xl font-semibold">Contact</h4>
         <div class="space-y-4">
-          <div class="flex items-start gap-3">
+          <a
+            href={PROPERTY_MAP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-start gap-3 text-primary-foreground/80 hover:text-white transition-colors"
+          >
             <MapPin className="w-5 h-5 mt-1 text-secondary shrink-0" />
-            <span class="text-primary-foreground/80">
+            <address class="not-italic">
+              Jl. Blumbungan No.1, Gg. Drupadi,<br />
               Sibang Kaja, Abiansemal,<br />
-              Badung Regency, Bali 80352,<br />
-              Indonesia
-            </span>
-          </div>
+              Badung Regency, Bali 80352, Indonesia
+            </address>
+          </a>
           <a
             href={buildWhatsAppUrl("Hi! I'm interested in the eco villas near Green School Bali.")}
             target="_blank"

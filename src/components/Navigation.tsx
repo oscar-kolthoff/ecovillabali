@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Location", href: "/location" },
   { label: "Lifestyle", href: "/lifestyle" },
   { label: "Green School Bali", href: "/green-school-villa-bali" },
+  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Inquire Now", href: "/inquire-now" },
@@ -22,7 +23,7 @@ const villaLinks = [
 ];
 
 // Pages that should always show scrolled-down (light) nav styling.
-const alwaysScrolledPages = ["/location", "/lifestyle", "/green-school-villa-bali", "/faq", "/inquire-now"];
+const alwaysScrolledPages = ["/location", "/lifestyle", "/green-school-villa-bali", "/about", "/faq", "/inquire-now"];
 
 export default function Navigation({ currentPath }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);

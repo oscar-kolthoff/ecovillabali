@@ -93,6 +93,7 @@ const articleSchema = buildArticleSchema({
   path,
   image,
   datePublished: "2026-06-01",
+  dateModified: "2026-07-13",
 });
 const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
 const faqSchema = buildFaqSchema(faqs);
@@ -123,7 +124,9 @@ const cspNonce = Astro.locals.cspNonce;
         <h1 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
           Relocating to Bali for Green School? What Families Should Know Before Making the Move
         </h1>
-        <p class="text-muted-foreground">By Eco Villa Bali</p>
+        <p class="text-muted-foreground">
+          By <a href="/about" class="text-accent hover:underline">Oscar Kolthoff</a>, former Eco Village Sibang resident and Green School Bali parent
+        </p>
       </header>
 
       <img
@@ -218,7 +221,8 @@ const cspNonce = Astro.locals.cspNonce;
         <p>
           Green School Bali's central location in Ubud makes it accessible from several neighborhoods, each offering
           distinct lifestyle experiences. Understanding where families choose to live and why they make these
-          choices can help guide your own decision.
+          choices can help guide your own decision. For a quick side-by-side comparison, see our guide on
+          <a href="/blog/where-to-live-near-green-school-bali" class="text-accent hover:underline">where to live near Green School Bali</a>.
         </p>
 
         <div class="overflow-x-auto my-6">

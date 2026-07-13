@@ -1,0 +1,247 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FAQAccordion from "@/components/FAQAccordion";
+import { buildBreadcrumbSchema, buildArticleSchema, buildFaqSchema } from "@/lib/schema";
+
+const title = "Where to Live Near Green School Bali: Sibang, Sayan, Ubud or Canggu?";
+const description =
+  "A quick decision guide to where Green School Bali families live: how Eco Village Sibang, Sayan, Ubud, and Canggu compare on commute, lifestyle, and daily family life.";
+const image = "https://ecovillabali.com/images/blog-green-school-campus.webp";
+const path = "/blog/where-to-live-near-green-school-bali";
+
+const areas = [
+  {
+    name: "Eco Village Sibang",
+    commute: "8-min walk (~700m)",
+    vibe: "Compact, sustainable, family-first",
+    bestFor: "Families who want to walk to school",
+  },
+  {
+    name: "Sayan",
+    commute: "~10–15 min drive",
+    vibe: "Green, upscale, river valleys",
+    bestFor: "Space and views, short drive",
+  },
+  {
+    name: "Ubud (central)",
+    commute: "~20–30 min drive",
+    vibe: "Cultural hub, busy, walkable town",
+    bestFor: "Town life, cafes, amenities",
+  },
+  {
+    name: "Canggu",
+    commute: "~60–90 min drive",
+    vibe: "Beach, surf, digital-nomad energy",
+    bestFor: "Coastal lifestyle over proximity",
+  },
+];
+
+const faqs = [
+  {
+    question: "Where do most Green School Bali families live?",
+    answer:
+      "Green School families cluster around the school in Sibang Kaja, in nearby Sayan and Ubud, and further afield in Canggu. Families who prioritise a short or walkable school run increasingly choose to live in villages like Eco Village Sibang, within walking distance of campus.",
+  },
+  {
+    question: "What is the closest neighbourhood to Green School Bali?",
+    answer:
+      "Eco Village Sibang is one of the closest residential communities to Green School Bali, roughly a 700-metre, 8-minute walk from campus. Very few places let families reach the school on foot rather than by car.",
+  },
+  {
+    question: "Is it better to live in Ubud or closer to Green School?",
+    answer:
+      "It depends on your priorities. Ubud offers town amenities, cafes, and culture but adds a daily 20–30 minute drive each way. Living closer, in Sibang or Sayan, trades some town buzz for a far shorter school run and more time as a family.",
+  },
+  {
+    question: "How long is the commute to Green School from Canggu?",
+    answer:
+      "Canggu to Green School is typically a 60–90 minute drive each way depending on traffic, which is why few full-time Green School families live there. Canggu suits families who prioritise the beach and are willing to accept a long daily commute.",
+  },
+  {
+    question: "Can children walk to Green School Bali?",
+    answer:
+      "Yes, if you live close enough. From Eco Village Sibang, children can safely walk or cycle to Green School in under 10 minutes. From most other areas, the school run requires a car or scooter.",
+  },
+];
+
+const articleSchema = buildArticleSchema({
+  headline: "Where to Live Near Green School Bali: Sibang, Sayan, Ubud or Canggu?",
+  description,
+  path,
+  image,
+  datePublished: "2026-07-13",
+  dateModified: "2026-07-13",
+});
+const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
+const faqSchema = buildFaqSchema(faqs);
+const cspNonce = Astro.locals.cspNonce;
+---
+
+<Layout title={title} description={description} image={image}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <div class="container max-w-3xl mx-auto px-4 py-16">
+      <a href="/blog" class="text-sm text-muted-foreground hover:text-accent transition-colors mb-8 inline-block">
+        &larr; Back to Blog
+      </a>
+
+      <header class="mb-8">
+        <div class="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+          <span>July 2026</span>
+          <span>&middot;</span>
+          <span>Choosing a Neighbourhood</span>
+          <span>&middot;</span>
+          <span>7 min read</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
+          Where to Live Near Green School Bali: Sibang, Sayan, Ubud or Canggu?
+        </h1>
+        <p class="text-muted-foreground">
+          By <a href="/about" class="text-accent hover:underline">Oscar Kolthoff</a>, former Eco Village Sibang resident and Green School Bali parent
+        </p>
+      </header>
+
+      <img
+        src="/images/blog-green-school-campus.webp"
+        alt="Green School Bali campus surrounded by greenery"
+        width="1200"
+        height="800"
+        loading="eager"
+        decoding="async"
+        class="w-full max-w-2xl rounded-lg mx-auto mb-8"
+      />
+
+      {/* GEO summary block: a concise, machine-readable answer AI engines can cite directly. */}
+      <div class="bg-card border border-border rounded-2xl p-6 mb-10">
+        <h2 class="font-serif text-lg font-bold text-primary mb-3">In short</h2>
+        <p class="text-foreground/90 leading-relaxed">
+          Green School Bali families mostly live in <strong>Sibang Kaja</strong> (walkable to campus),
+          <strong>Sayan</strong> (a short drive), <strong>Ubud</strong> (20–30 minutes), or
+          <strong>Canggu</strong> (a long commute for beach lovers). The single biggest trade-off is the
+          school run: living within walking distance, as in <strong>Eco Village Sibang</strong>, removes a
+          daily drive that shapes everything else about family life.
+        </p>
+      </div>
+
+      <div class="space-y-5 text-foreground/90 leading-relaxed">
+        <p>
+          Once a family decides on Green School Bali, the next question is where to actually live. It is a
+          bigger decision than it looks: the neighbourhood you choose sets your daily commute, your children's
+          independence, and how easily you slot into the community. This is a quick decision guide. For a
+          deeper look at relocating overall, see our
+          <a href="/blog/complete-guide-relocating-bali-expat-family" class="text-accent hover:underline">complete guide to relocating to Bali for Green School</a>.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">The Options at a Glance</h2>
+
+        <div class="overflow-x-auto my-6">
+          <table class="w-full border-collapse border border-border text-sm">
+            <thead class="bg-muted/50">
+              <tr class="border-b border-border">
+                <th class="px-4 py-3 text-left font-semibold">Area</th>
+                <th class="px-4 py-3 text-left font-semibold">Commute to Green School</th>
+                <th class="px-4 py-3 text-left font-semibold">Character</th>
+                <th class="px-4 py-3 text-left font-semibold">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              {areas.map((a) => (
+                <tr class="border-b border-border">
+                  <td class="px-4 py-3 font-semibold whitespace-nowrap">{a.name}</td>
+                  <td class="px-4 py-3 whitespace-nowrap">{a.commute}</td>
+                  <td class="px-4 py-3">{a.vibe}</td>
+                  <td class="px-4 py-3 text-muted-foreground">{a.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-sm text-muted-foreground">
+          Drive times are approximate and depend heavily on Bali traffic, which is why proximity matters so
+          much in practice.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Eco Village Sibang: Walk to School</h2>
+        <p>
+          Sibang Kaja is where Green School itself sits, and Eco Village Sibang is one of the few residential
+          communities close enough for children to walk or cycle to campus, roughly 8 minutes on foot. That
+          single fact removes the daily drive that dominates life in every other option, and it is the reason
+          many families settle here. It is a compact, sustainability-minded village where most neighbours are
+          also Green School families. See the <a href="/location" class="text-accent hover:underline">location page</a>
+          for exact travel times.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Sayan: Space and Views, Short Drive</h2>
+        <p>
+          Sayan, just west of Ubud along the river valleys, is greener and more upscale, known for dramatic
+          views and larger plots. The drive to Green School is short, usually 10 to 15 minutes, making it a
+          popular middle ground for families who want space without a long commute.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Ubud: Town Life and Amenities</h2>
+        <p>
+          Central Ubud offers the most amenities: cafes, shops, yoga studios, and a walkable town centre. The
+          trade-off is a daily 20 to 30 minute drive to school and back, plus Ubud's own traffic. It suits
+          families who value town life and are happy to build the commute into their routine.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Canggu: Beach Over Proximity</h2>
+        <p>
+          Canggu is Bali's coastal, digital-nomad hotspot, with beaches, surf, and a busy cafe scene. For
+          Green School it is a stretch: a 60 to 90 minute drive each way means very few full-time Green School
+          families live there. Canggu makes sense only if the beach lifestyle outweighs the daily school run.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">The Case for Walking Distance</h2>
+        <p>
+          Almost every family underestimates how much the school run shapes daily life. Two 30-minute drives a
+          day, in Bali traffic, with children, adds up to hours each week and a great deal of stress. Living
+          within walking distance turns that time back into mornings that are calm, afternoons that are free,
+          and children who can move around their own neighbourhood independently. It is the quiet luxury that
+          families who have tried both consistently talk about most.
+        </p>
+        <p>
+          If walking distance is your priority, our two villas, <a href="/villa-sungai" class="text-accent hover:underline">Villa Sungai</a>
+          and <a href="/villa-kailash" class="text-accent hover:underline">Villa Kailash</a>, are both an 8-minute
+          walk from Green School in Eco Village Sibang.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Frequently Asked Questions</h2>
+        <div class="my-6">
+          <FAQAccordion faqs={faqs} idPrefix="where-to-live-faq" client:load />
+        </div>
+
+        <div class="bg-card border border-border rounded-2xl p-8 my-10">
+          <h3 class="font-serif text-2xl font-bold text-primary mb-4">Key Takeaways</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Green School families mainly live in Sibang, Sayan, Ubud, or Canggu.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Eco Village Sibang is one of the only options within walking distance of campus.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Sayan offers space with a short drive; Ubud offers town life with a longer one.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Canggu means a 60–90 minute commute, so few Green School families live there.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>The daily school run is the trade-off that matters most; walking distance removes it.</span></li>
+          </ul>
+        </div>
+
+        <div class="bg-primary text-primary-foreground rounded-2xl p-8 my-10 text-center">
+          <h2 class="font-serif text-2xl font-bold mb-3">Want to live within walking distance?</h2>
+          <p class="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
+            Both of our eco villas are an 8-minute walk from Green School in Eco Village Sibang. We sell them
+            directly, so you can ask us anything about the area before you decide.
+          </p>
+          <a
+            href="/inquire-now"
+            class="inline-block rounded-full px-8 py-3 font-serif font-bold bg-accent text-accent-foreground hover:bg-accent/90 transition-all hover:scale-105"
+          >
+            Inquire Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,264 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FAQAccordion from "@/components/FAQAccordion";
+import { buildBreadcrumbSchema, buildArticleSchema, buildFaqSchema } from "@/lib/schema";
+
+const title = "Buying Property in Bali as a Foreigner: A Guide for Green School Families";
+const description =
+  "How foreigners can legally buy a villa in Bali: leasehold, Hak Pakai, and PT PMA explained, the risks of nominee deals, and a due-diligence checklist before you sign.";
+const image = "https://ecovillabali.com/images/blog-villa-sungai.webp";
+const path = "/blog/buying-property-bali-foreigner";
+
+const faqs = [
+  {
+    question: "Can foreigners own property in Bali?",
+    answer:
+      "Foreigners cannot own freehold (Hak Milik) land in Indonesia, but they can legally control property in Bali through leasehold agreements, a Right to Use title (Hak Pakai) for residents, or a foreign-owned company (PT PMA). Independent legal advice is essential before committing.",
+  },
+  {
+    question: "What is the difference between leasehold and freehold in Bali?",
+    answer:
+      "Freehold (Hak Milik) is full ownership reserved for Indonesian citizens. Leasehold gives a foreign buyer the right to use a property for a fixed, negotiated term, usually with options to extend. Leasehold is the most common route for foreign villa buyers.",
+  },
+  {
+    question: "Is a nominee arrangement safe for buying property in Bali?",
+    answer:
+      "No. A nominee arrangement, where an Indonesian citizen holds freehold title on a foreigner's behalf, is widely considered legally unenforceable and carries a real risk of losing the property. Most legal professionals advise against it in favour of leasehold or a PT PMA.",
+  },
+  {
+    question: "What should I check before buying a villa in Bali?",
+    answer:
+      "Verify the land certificate and title type, confirm the zoning allows residential use, check that building permits are in order, and engage an independent notary (PPAT) and lawyer. Never rely solely on the seller's or agent's documentation.",
+  },
+  {
+    question: "Do I need a notary to buy property in Bali?",
+    answer:
+      "Yes. Property transactions in Indonesia are formalised by a licensed land deed official (PPAT), often a notary. Using an independent notary you appoint yourself, rather than one chosen only by the seller, protects your interests.",
+  },
+];
+
+const articleSchema = buildArticleSchema({
+  headline: "Buying Property in Bali as a Foreigner: A Guide for Green School Families",
+  description,
+  path,
+  image,
+  datePublished: "2026-07-13",
+  dateModified: "2026-07-13",
+});
+const breadcrumbSchema = buildBreadcrumbSchema("Blog", "/blog");
+const faqSchema = buildFaqSchema(faqs);
+const cspNonce = Astro.locals.cspNonce;
+---
+
+<Layout title={title} description={description} image={image}>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="pt-8">
+    <div class="container max-w-3xl mx-auto px-4 py-16">
+      <a href="/blog" class="text-sm text-muted-foreground hover:text-accent transition-colors mb-8 inline-block">
+        &larr; Back to Blog
+      </a>
+
+      <header class="mb-8">
+        <div class="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+          <span>July 2026</span>
+          <span>&middot;</span>
+          <span>Buying in Bali</span>
+          <span>&middot;</span>
+          <span>9 min read</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
+          Buying Property in Bali as a Foreigner: A Guide for Green School Families
+        </h1>
+        <p class="text-muted-foreground">
+          By <a href="/about" class="text-accent hover:underline">Oscar Kolthoff</a>, former Eco Village Sibang resident and Green School Bali parent
+        </p>
+      </header>
+
+      <img
+        src="/images/blog-villa-sungai.webp"
+        alt="Eco villa in Sibang, Bali, set among tropical greenery"
+        width="1200"
+        height="800"
+        loading="eager"
+        decoding="async"
+        class="w-full max-w-2xl rounded-lg mx-auto mb-8"
+      />
+
+      {/* GEO summary block: a concise, machine-readable answer AI engines can cite directly. */}
+      <div class="bg-card border border-border rounded-2xl p-6 mb-10">
+        <h2 class="font-serif text-lg font-bold text-primary mb-3">In short</h2>
+        <p class="text-foreground/90 leading-relaxed">
+          Foreigners cannot own freehold land in Bali, but they can legally hold property through
+          <strong>leasehold</strong>, a <strong>Hak Pakai</strong> (Right to Use) title, or a foreign-owned
+          company (<strong>PT PMA</strong>). Leasehold is the most common route for a family buying a home.
+          Avoid nominee arrangements, verify the certificate and zoning, and always use your own independent
+          notary and lawyer. This guide is general information, not legal advice.
+        </p>
+      </div>
+
+      <div class="space-y-5 text-foreground/90 leading-relaxed">
+        <p>
+          For many families, the decision to move to Bali for Green School eventually leads to a bigger
+          question: rent, or buy? Buying can turn a two-year adventure into a genuine home and a long-term
+          base for your children's education. But property ownership in Indonesia works differently than in
+          most Western countries, and the rules exist to protect a foreign buyer as much as to restrict one.
+        </p>
+
+        <p>
+          This guide explains the legal routes available to foreigners, the pitfalls to avoid, and the checks
+          to run before you sign. It is written from the perspective of a family who went through this
+          themselves, not a law firm. Treat it as an informed starting point, then confirm the specifics with
+          a qualified Indonesian property lawyer.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Can Foreigners Own Property in Bali?</h2>
+
+        <p>
+          Foreigners cannot hold freehold title (<em>Hak Milik</em>) to land in Indonesia. That right is
+          reserved for Indonesian citizens. This is the single most important fact to understand, and it is
+          the same for every foreign buyer, everywhere in Bali.
+        </p>
+
+        <p>
+          What foreigners <em>can</em> do is hold legally recognised rights to use property. There are three
+          common routes, each suited to a different situation.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">The Three Legal Routes</h2>
+
+        <div class="overflow-x-auto my-6">
+          <table class="w-full border-collapse border border-border text-sm">
+            <thead class="bg-muted/50">
+              <tr class="border-b border-border">
+                <th class="px-4 py-3 text-left font-semibold">Route</th>
+                <th class="px-4 py-3 text-left font-semibold">What it is</th>
+                <th class="px-4 py-3 text-left font-semibold">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="px-4 py-3 font-semibold whitespace-nowrap">Leasehold<br />(Hak Sewa)</td>
+                <td class="px-4 py-3">The right to use a property for a fixed, negotiated term, commonly with options to extend.</td>
+                <td class="px-4 py-3 text-muted-foreground">Most families buying a home to live in.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="px-4 py-3 font-semibold whitespace-nowrap">Right to Use<br />(Hak Pakai)</td>
+                <td class="px-4 py-3">A use title available to foreigners who hold Indonesian residency, registered in your own name.</td>
+                <td class="px-4 py-3 text-muted-foreground">Residents planning to stay long term.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="px-4 py-3 font-semibold whitespace-nowrap">Company<br />(PT PMA)</td>
+                <td class="px-4 py-3">A foreign-owned Indonesian company that holds a right-to-build title (Hak Guna Bangunan).</td>
+                <td class="px-4 py-3 text-muted-foreground">Buyers combining a home with a business or rental.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          <!-- VERIFY(oscar): typical leasehold term length and extension structure in your area, e.g. "25 years with an option to extend by another 25". Left general on purpose. -->
+          Leasehold terms are negotiated between buyer and seller, so the length and extension conditions
+          vary from property to property. Because the details matter enormously over a 20 or 30 year horizon,
+          the lease agreement itself deserves as much scrutiny as the property.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Why Nominee Arrangements Are Risky</h2>
+
+        <p>
+          You may hear about buying freehold land through a "nominee", where an Indonesian citizen holds the
+          title on your behalf under a private agreement. It can look like a shortcut to full ownership. It is
+          not.
+        </p>
+
+        <p>
+          Indonesian law does not recognise beneficial ownership behind a nominee, and side agreements written
+          to create it are widely regarded as unenforceable. If the relationship breaks down, or the nominee's
+          circumstances change, a foreign buyer can be left with little legal protection. This is why most
+          reputable lawyers steer families toward leasehold or a PT PMA instead.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Your Due-Diligence Checklist</h2>
+
+        <p>
+          Whichever route you choose, the same groundwork protects you. Before you commit to any villa in
+          Bali, confirm each of the following, ideally with your own advisors rather than the seller's:
+        </p>
+
+        <div class="bg-card border border-border rounded-2xl p-8 my-6">
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><span class="text-accent mt-1">&#10003;</span><span><strong>The certificate:</strong> confirm the land certificate is genuine, matches the property, and shows the title type you expect.</span></li>
+            <li class="flex items-start gap-3"><span class="text-accent mt-1">&#10003;</span><span><strong>Zoning:</strong> check the land is zoned to allow a residence, not only agriculture or protected green zone.</span></li>
+            <li class="flex items-start gap-3"><span class="text-accent mt-1">&#10003;</span><span><strong>Building permits:</strong> verify the property has valid building permits (PBG, formerly IMB) for what is actually built.</span></li>
+            <li class="flex items-start gap-3"><span class="text-accent mt-1">&#10003;</span><span><strong>Independent notary:</strong> appoint your own licensed land deed official (PPAT) to formalise the transaction.</span></li>
+            <li class="flex items-start gap-3"><span class="text-accent mt-1">&#10003;</span><span><strong>Legal counsel:</strong> have an Indonesian property lawyer review the lease or purchase agreement before you sign anything or transfer funds.</span></li>
+            <li class="flex items-start gap-3"><span class="text-accent mt-1">&#10003;</span><span><strong>Access and boundaries:</strong> confirm road access, boundaries, and any shared or communal arrangements in writing.</span></li>
+          </ul>
+        </div>
+
+        <p>
+          None of these steps is exotic. They are the same basic protections you would want anywhere. What
+          changes in Bali is the vocabulary and the paperwork, which is exactly why local, independent advice
+          is worth the cost.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Buying Near Green School Specifically</h2>
+
+        <p>
+          Property within walking distance of Green School Bali is genuinely scarce. Most families who want a
+          home near campus are choosing between a small number of villages, and homes there rarely sit on the
+          open market for long. That scarcity is worth planning around: it pays to have your financing,
+          residency situation, and legal advisor lined up <em>before</em> you find the right home, so you can
+          move at the pace the market demands.
+        </p>
+
+        <p>
+          It also helps to buy from someone who can answer honest questions about the specific property and its
+          paperwork. When you are dealing directly with an owner who has lived in the home and the community,
+          you can ask the questions that matter, about the title, the neighbours, the walk to school, and get
+          a straight answer.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-primary mt-10 mb-3">Frequently Asked Questions</h2>
+        <div class="my-6">
+          <FAQAccordion faqs={faqs} idPrefix="buying-property-faq" client:load />
+        </div>
+
+        <div class="bg-card border border-border rounded-2xl p-8 my-10">
+          <h3 class="font-serif text-2xl font-bold text-primary mb-4">Key Takeaways</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Foreigners cannot own freehold land in Bali, but can hold property via leasehold, Hak Pakai, or a PT PMA.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Leasehold is the most common and straightforward route for a family buying a home.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Nominee arrangements are legally risky and best avoided.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Always verify the certificate, zoning, and building permits, and use your own notary and lawyer.</span></li>
+            <li class="flex items-start gap-3 text-muted-foreground"><span class="text-accent mt-1">&#10003;</span><span>Homes within walking distance of Green School are scarce, so prepare before you search.</span></li>
+          </ul>
+        </div>
+
+        <div class="bg-primary text-primary-foreground rounded-2xl p-8 my-10 text-center">
+          <h2 class="font-serif text-2xl font-bold mb-3">Thinking about buying near Green School?</h2>
+          <p class="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
+            We sell our two eco villas in Eco Village Sibang directly, and we are happy to walk you through the
+            questions in this guide as they apply to a real home.
+          </p>
+          <a
+            href="/inquire-now"
+            class="inline-block rounded-full px-8 py-3 font-serif font-bold bg-accent text-accent-foreground hover:bg-accent/90 transition-all hover:scale-105"
+          >
+            Inquire Now
+          </a>
+        </div>
+
+        <p class="text-sm text-muted-foreground border-t border-border pt-6">
+          This article is general information for Green School families and does not constitute legal or
+          financial advice. Property law in Indonesia changes and every situation differs. Always consult a
+          qualified Indonesian property lawyer and notary before making a purchase.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

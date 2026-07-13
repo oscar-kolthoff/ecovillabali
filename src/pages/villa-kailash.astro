@@ -6,23 +6,30 @@ import GalleryKailash from "@/components/GalleryKailash";
 import VillaHighlights, { villaHighlightsData } from "@/components/VillaHighlights";
 import Contact from "@/components/Contact";
 import MeetTheOwners from "@/components/MeetTheOwners";
-import { buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildFaqSchema, buildResidenceSchema } from "@/lib/schema";
 
 const title = "Villa Kailash: Spacious Eco Villa Near Green School Bali";
 const description =
   "Villa Kailash is a spacious 3/4-bedroom eco villa in Sibang with a large natural pool and village views, just an 8-minute walk from Green School Bali.";
 const image = "https://ecovillabali.com/images/villa-kailash-hero.webp";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
+const productSchema = buildResidenceSchema({
   name: "Villa Kailash",
   description:
-    "Spacious 3/4-bedroom eco villa in Eco Village Sibang with rice field views, a natural pool, yoga studio, and 950 sqm of land, an 8-minute walk from Green School Bali.",
+    "Spacious 3-bedroom eco villa in Eco Village Sibang with a large natural pool, yoga studio, and 950 sqm of land, an 8-minute walk from Green School Bali.",
   image,
-  brand: { "@type": "Organization", name: "Eco Villa Bali" },
-  category: "Eco family villa for sale",
-};
+  path: "/villa-kailash",
+  numberOfBedrooms: 3,
+  landAreaSqm: 950,
+  amenities: [
+    "Large natural pool",
+    "Dedicated yoga studio",
+    "Dedicated home office",
+    "Game and cinema room",
+    "Open living areas for hosting",
+    "Sustainable construction (mud, teak, bamboo, grass)",
+  ],
+});
 const breadcrumbSchema = buildBreadcrumbSchema("Villa Kailash", "/villa-kailash");
 const faqSchema = buildFaqSchema(villaHighlightsData.kailash.faqs);
 const cspNonce = Astro.locals.cspNonce;

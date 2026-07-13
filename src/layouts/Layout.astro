@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer.astro";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp.astro";
 import { Toaster } from "@/components/ui/sonner";
+import { PROPERTY_ADDRESS } from "@/lib/schema";
 import "@/styles/global.css";
 
 const SITE_URL = "https://ecovillabali.com";
@@ -48,7 +49,8 @@ const cspNonce = Astro.locals.cspNonce as string | undefined;
       name: "Eco Villa Bali",
       url: `${SITE_URL}/`,
       description: "Eco Villa Bali sells two sustainable family villas, Villa Sungai and Villa Kailash, within an 8-minute walk of Green School Bali in Eco Village Sibang.",
-      founder: { "@type": "Person", name: "Oscar", description: "Owner of Eco Villa Bali, a former resident of Eco Village Sibang and former Green School Bali parent." },
+      address: PROPERTY_ADDRESS,
+      founder: { "@type": "Person", name: "Oscar Kolthoff", url: `${SITE_URL}/about`, sameAs: ["https://www.linkedin.com/in/oscarkolthoff/"], description: "Owner of Eco Villa Bali, a former resident of Eco Village Sibang and former Green School Bali parent." },
     })} />
     <script type="application/ld+json" is:inline nonce={cspNonce} set:html={JSON.stringify({
       "@context": "https://schema.org",

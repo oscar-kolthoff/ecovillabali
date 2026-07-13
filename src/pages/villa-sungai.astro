@@ -6,23 +6,31 @@ import Gallery from "@/components/Gallery";
 import VillaHighlights, { villaHighlightsData } from "@/components/VillaHighlights";
 import Contact from "@/components/Contact";
 import MeetTheOwners from "@/components/MeetTheOwners";
-import { buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildFaqSchema, buildResidenceSchema } from "@/lib/schema";
 
 const title = "Villa Sungai: Eco Family Villa Near Green School Bali";
 const description =
   "Villa Sungai is a sustainable 3-bedroom eco family home in Sibang, an 8-minute walk from Green School Bali, with a natural pool and riverside setting.";
 const image = "https://ecovillabali.com/images/villa-sungai-hero.webp";
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
+const productSchema = buildResidenceSchema({
   name: "Villa Sungai",
   description:
     "Sustainable 3-bedroom eco family villa in Eco Village Sibang, an 8-minute walk from Green School Bali, with a natural pool and riverside setting.",
   image,
-  brand: { "@type": "Organization", name: "Eco Villa Bali" },
-  category: "Eco family villa for sale",
-};
+  path: "/villa-sungai",
+  numberOfBedrooms: 3,
+  landAreaSqm: 800,
+  amenities: [
+    "Private natural pool with river view",
+    "Riverside jungle setting",
+    "Air conditioning throughout",
+    "Washer and dryer on main floor",
+    "Separate TV / home office space",
+    "Closed living and kitchen with large bifold doors",
+    "Sustainable construction (mud, teak, grass)",
+  ],
+});
 const breadcrumbSchema = buildBreadcrumbSchema("Villa Sungai", "/villa-sungai");
 const faqSchema = buildFaqSchema(villaHighlightsData.sungai.faqs);
 const cspNonce = Astro.locals.cspNonce;
