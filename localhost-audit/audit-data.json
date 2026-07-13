@@ -1,0 +1,333 @@
+{
+  "summary": {
+    "health_score": 30,
+    "business_type": "Boutique real estate — individual seller/broker, two active villa listings near Green School Bali",
+    "top_findings": [
+      "Zero content in the initial HTML on every page (fully client-rendered SPA, no SSR/prerender) — invisible to non-JS-executing crawlers including GPTBot, ClaudeBot, PerplexityBot",
+      "No robots.txt, sitemap.xml, or llms.txt exist despite being required by the project's own guidelines",
+      "Zero structured data anywhere (no Organization, WebSite, FAQPage, or Product/listing schema)",
+      "/lifestyle and /green-school are 100% duplicate content of homepage sections, and both have zero <h1>",
+      "Only 3 of 9 pages set a unique title/meta description, even client-side"
+    ],
+    "quick_wins": [
+      "Add FAQPage JSON-LD to /faq using the 9 Q&A pairs already written in FAQPage.tsx",
+      "Call the existing usePageMeta hook on the 6 pages that don't use it yet",
+      "Add robots.txt, sitemap.xml, and llms.txt as static files in client/public/",
+      "Preload the two hero images and switch from CSS background-image to <img>/<picture>",
+      "Make FAQ accordion answers exist in the DOM by default instead of only when clicked"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 35,
+      "what_works": [
+        "Clean, human-readable URL structure with no query-string routing",
+        "<html lang=\"en\"> set correctly",
+        "Semantic landmarks (nav, main, footer) present on every page",
+        "All 9 routes reachable within 1 click via the footer — no orphan pages"
+      ],
+      "findings": [
+        {
+          "title": "No robots.txt",
+          "severity": "Critical",
+          "description": "GET /robots.txt returns the SPA fallback shell (200 text/html), not a real robots.txt. No client/public/robots.txt exists.",
+          "recommendation": "Add a robots.txt explicitly allowing GPTBot, ClaudeBot, PerplexityBot, and Google-Extended, per this project's own CLAUDE.md."
+        },
+        {
+          "title": "No sitemap.xml",
+          "severity": "Critical",
+          "description": "GET /sitemap.xml returns the same SPA shell. No sitemap exists for any of the 9 indexable routes.",
+          "recommendation": "Generate and serve a sitemap.xml listing all indexable routes."
+        },
+        {
+          "title": "No llms.txt",
+          "severity": "Critical",
+          "description": "GET /llms.txt returns the SPA shell. Required by this project's own CLAUDE.md; entirely absent.",
+          "recommendation": "Add an llms.txt at the site root listing canonical URLs and short descriptions."
+        },
+        {
+          "title": "Fully client-rendered, zero content in initial HTML",
+          "severity": "Critical",
+          "description": "Every route's raw HTML is identical: <div id=\"root\"></div> and a script tag. Confirmed identical <title> across all 9 routes when fetched without JS execution.",
+          "recommendation": "Add server-side rendering or static prerendering so meaningful content and per-page metadata exist in the initial HTML response."
+        },
+        {
+          "title": "No canonical tags",
+          "severity": "High",
+          "description": "No <link rel=\"canonical\"> anywhere in the codebase.",
+          "recommendation": "Add a canonical tag to every page, self-referencing unless a duplicate/parameterized URL exists."
+        },
+        {
+          "title": "No Open Graph / Twitter Card tags",
+          "severity": "High",
+          "description": "No og:title, og:description, og:image, or twitter:card meta tags anywhere. Social shares show no image and a generic preview.",
+          "recommendation": "Add Open Graph and Twitter Card meta tags, with per-page image/description overrides."
+        },
+        {
+          "title": "Only 3 of 9 pages set a unique title/description client-side",
+          "severity": "High",
+          "description": "usePageMeta is only called on Home.tsx, VillaSungai.tsx, and VillaKailash.tsx. The other 6 routes never update the title, including a page purpose-built as its own SEO landing page (/green-school-villa-bali).",
+          "recommendation": "Call usePageMeta with unique title/description on all remaining pages."
+        },
+        {
+          "title": "No security headers",
+          "severity": "Medium",
+          "description": "No Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security, or Referrer-Policy on any response.",
+          "recommendation": "Add helmet or equivalent Express middleware to set standard security headers."
+        },
+        {
+          "title": "Legacy meta keywords tag present",
+          "severity": "Low",
+          "description": "index.html still ships a <meta name=\"keywords\"> tag, ignored by Google since ~2009.",
+          "recommendation": "Remove the tag; no functional benefit and it's dead weight."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 45,
+      "what_works": [
+        "FAQ page content is genuinely strong: 9 questions in real buyer language, each answered in 2-3 declarative, entity-rich sentences",
+        "Villa Sungai and Villa Kailash have distinct, specific hero copy after the latest edit",
+        "Clean heading hierarchy within any single rendered page"
+      ],
+      "findings": [
+        {
+          "title": "/lifestyle and /green-school are 100% duplicate content of homepage sections",
+          "severity": "Critical",
+          "description": "Both pages render only a single shared component (<GreenSchool /> or <Lifestyle />) that is verbatim identical to the section already embedded in the homepage. Both also have zero <h1> and share the generic homepage title/meta.",
+          "recommendation": "Give each page genuinely unique, deeper content, or fold them back into homepage anchors and redirect the standalone routes."
+        },
+        {
+          "title": "Duplicate H2 across the two villa listing pages",
+          "severity": "Critical",
+          "description": "VillaDetails.tsx uses the identical heading \"Villa near Green School Bali – Eco & Family Living\" for both Villa Sungai and Villa Kailash.",
+          "recommendation": "Write distinct, property-specific section headings for each villa."
+        },
+        {
+          "title": "Zero E-E-A-T / authorship signals",
+          "severity": "High",
+          "description": "No author byline, credentials, license/verification info, or sameAs links exist anywhere on the site.",
+          "recommendation": "Add an author/agent byline with credentials and sameAs links to a real business/person entity."
+        },
+        {
+          "title": "FAQ answers absent from the DOM until clicked",
+          "severity": "High",
+          "description": "Each answer is only rendered conditionally when its accordion is open; openIndex starts at null, so all 9 answers are invisible to anything that doesn't click through each item.",
+          "recommendation": "Render answers in the DOM by default (visually collapsed via CSS) so crawlers and AI engines can read them without interaction."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 30,
+      "what_works": [
+        "Homepage H1 directly matches search intent: \"Two Eco Villas Near Green School Bali\"",
+        "Villa Sungai and Villa Kailash each have their own accurate, unique H1",
+        "Sitewide footer navigation reaches every route in 1 click"
+      ],
+      "findings": [
+        {
+          "title": "Three routes have zero <h1>",
+          "severity": "Critical",
+          "description": "/location, /lifestyle, and /green-school render only h2-level headings with no page-level H1 matching search intent.",
+          "recommendation": "Add a unique, intent-matched H1 to each of these three pages."
+        },
+        {
+          "title": "6 of 9 pages share one title/meta description",
+          "severity": "Critical",
+          "description": "Google Search Console will very likely report these as duplicate title/duplicate meta description across the majority of the site's URLs.",
+          "recommendation": "See technical.md #7 — call usePageMeta with unique content on all pages."
+        },
+        {
+          "title": "No contextual internal links to the dedicated SEO landing page",
+          "severity": "High",
+          "description": "/green-school-villa-bali is only linked from the sitewide footer, with no contextual, descriptive-anchor-text links from the two commercial villa pages that would benefit most.",
+          "recommendation": "Add in-content links from /villa-sungai, /villa-kailash, and /location using descriptive anchor text."
+        },
+        {
+          "title": "FAQ accordion missing aria-expanded/aria-controls",
+          "severity": "Medium",
+          "description": "Screen readers won't announce open/closed state of FAQ accordion items.",
+          "recommendation": "Add aria-expanded and aria-controls attributes to the accordion toggle buttons."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Zero structured data anywhere on the site",
+          "severity": "Critical",
+          "description": "No Organization, WebSite, BreadcrumbList, Product/RealEstateListing, or FAQPage JSON-LD exists anywhere, despite 9 ready-to-mark-up FAQ answers already written.",
+          "recommendation": "Implement in order: FAQPage on /faq, Organization+WebSite on homepage, Product/listing schema on both villa pages (omitting price per the site's no-pricing policy), BreadcrumbList sitewide. Validate each with Google's Rich Results Test."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 25,
+      "what_works": [
+        "TTFB negligible on localhost, confirming no server-side app bottleneck",
+        "Preconnect hints present for Google Fonts"
+      ],
+      "findings": [
+        {
+          "title": "Production JS bundle ~2.7x over this project's own 70KB gzip budget",
+          "severity": "Critical",
+          "description": "pnpm build output: 654.35 kB raw / 189.19 kB gzip in a single unsplit chunk, confirmed by Vite's own 'chunks larger than 500kB' warning.",
+          "recommendation": "Code-split by route at minimum; lazy-load below-the-fold libraries (Framer Motion, unused Radix primitives)."
+        },
+        {
+          "title": "Hero images unoptimized and likely miss the LCP target",
+          "severity": "Critical",
+          "description": "villa-sungai-hero.jpg is 554KB at 2048x1366 and is the LCP element on / and /villa-sungai, rendered via CSS background-image (undiscoverable by the preload scanner), with no preload, no fetchpriority, no responsive srcset.",
+          "recommendation": "Switch hero images to <img>/<picture>, add preload+fetchpriority=high for the LCP image, compress under 100KB, add responsive srcset."
+        },
+        {
+          "title": "Other large images loaded on the homepage",
+          "severity": "High",
+          "description": "organic-living.jpg (605KB) and green-school-3.jpg (397KB) load on the homepage, both far above the project's own 100KB hero-image target.",
+          "recommendation": "Compress and convert to WebP/AVIF; resize to actual render dimensions."
+        },
+        {
+          "title": "No responsive images anywhere",
+          "severity": "High",
+          "description": "Zero srcset/sizes usage across the codebase — every image ships full source resolution to every device.",
+          "recommendation": "Add srcset/sizes to all content images."
+        },
+        {
+          "title": "14 of 16 homepage images missing explicit width/height",
+          "severity": "Medium",
+          "description": "Missing intrinsic dimensions is a primary cause of Cumulative Layout Shift.",
+          "recommendation": "Add explicit width/height attributes to all <img> tags."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 15,
+      "what_works": [
+        "Villa hero copy is declarative and entity-rich, the right style for AI citation once reachable"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt",
+          "severity": "Critical",
+          "description": "Required by this project's own CLAUDE.md; does not exist.",
+          "recommendation": "Add llms.txt at the site root."
+        },
+        {
+          "title": "Content invisible to non-JS-executing AI crawlers",
+          "severity": "Critical",
+          "description": "GPTBot, ClaudeBot, and PerplexityBot commonly do not execute JavaScript. Every URL on the site currently returns an empty root div to such crawlers.",
+          "recommendation": "Add SSR or static prerendering."
+        },
+        {
+          "title": "No crawler policy exists at all",
+          "severity": "High",
+          "description": "Combined absence of robots.txt, llms.txt, and canonical tags means no explicit signal to AI engines about which URLs are canonical or intended for citation.",
+          "recommendation": "Add all three; see technical.md."
+        },
+        {
+          "title": "No E-E-A-T / citation-worthiness signals",
+          "severity": "High",
+          "description": "No author byline or credentials exist anywhere, reducing AI engines' willingness to cite the source.",
+          "recommendation": "Add an author/agent byline with credentials and sameAs links."
+        },
+        {
+          "title": "Strong FAQ content is trapped, not exposed",
+          "severity": "High",
+          "description": "The FAQ page's Q&A content is close to ideal GEO material but isn't in the DOM by default and has no FAQPage schema.",
+          "recommendation": "Fix DOM visibility and add FAQPage schema together for compounding benefit."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 35,
+      "what_works": [
+        "100% alt-text coverage across all 16 homepage images checked",
+        "Correct lazy-loading pattern: below-the-fold images lazy, above-the-fold hero/first-card images eager"
+      ],
+      "findings": [
+        {
+          "title": "No modern image formats",
+          "severity": "Critical",
+          "description": "28 top-level .jpg files plus ~30 more in villa-kailash/, exactly one .webp, zero AVIF. Total images folder: 26MB.",
+          "recommendation": "Convert to AVIF-first with WebP fallback, per this project's own image priority order."
+        },
+        {
+          "title": "Oversized source files",
+          "severity": "Critical",
+          "description": "Multiple gallery images between 600KB-980KB (e.g. villa-kailash/10.Semi-basement-yoga2.jpg at 976K), 8-30x over the project's own 30-100KB budgets.",
+          "recommendation": "Compress and resize all gallery images to actual render dimensions."
+        },
+        {
+          "title": "villa-kailash-hero.jpg is a mislabeled file",
+          "severity": "Medium",
+          "description": "The file is actually WebP content saved with a .jpg extension, confirmed via the file command.",
+          "recommendation": "Rename and correctly re-export as a true, appropriately-named WebP or AVIF file."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Add robots.txt allowing GPTBot, ClaudeBot, PerplexityBot, Google-Extended",
+          "Add sitemap.xml listing all 9 routes",
+          "Add llms.txt at the site root",
+          "Fix FAQ accordion so answers exist in the DOM by default",
+          "Add FAQPage JSON-LD schema to /faq",
+          "Call usePageMeta on the 6 pages missing it",
+          "Add page-level H1 to /location, /lifestyle, /green-school",
+          "Resolve the /lifestyle and /green-school duplicate-content problem"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Add Open Graph + Twitter Card tags sitewide",
+          "Add canonical tags to every page",
+          "De-duplicate the villa detail H2 across Villa Sungai and Villa Kailash",
+          "Add contextual internal links to /green-school-villa-bali",
+          "Add Organization + WebSite JSON-LD to homepage; Product/listing schema to villa pages",
+          "Preload and properly serve the two hero images",
+          "Add aria-expanded/aria-controls to the FAQ accordion"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Add an author/agent byline with credentials sitewide",
+          "Compress and convert the full image library to WebP/AVIF with responsive srcset",
+          "Code-split the JS bundle by route",
+          "Add explicit width/height to homepage images missing them"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Add security headers via helmet or equivalent",
+          "Remove the legacy meta keywords tag",
+          "Run Lighthouse/PageSpeed Insights against the live production domain",
+          "Re-audit after Phase 1-2 land to confirm score movement and no regressions"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

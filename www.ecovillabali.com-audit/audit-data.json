@@ -1,0 +1,212 @@
+{
+  "summary": {
+    "health_score": 58,
+    "business_type": "Local real estate / property developer (eco villas for sale, near Green School Bali) — small marketing site, 9 pages",
+    "top_findings": [
+      "Villa Sungai (/villa-sungai), a primary nav-level page, serves the homepage's title, meta description, canonical tag, and H1 — its canonical explicitly tells Google the page is a duplicate of the homepage, risking exclusion from the index",
+      "Site is 100% client-side rendered: initial HTML is blank (0 chars) on 8 of 9 routes and near-blank (47 chars) on the homepage, invisible to AI crawlers (GPTBot, ClaudeBot, PerplexityBot) that don't execute JavaScript",
+      "LCP is 6.3-7.2s against a 1.8s target (3.5-4x over) because the hero text waits behind full JS hydration instead of being in server-rendered HTML",
+      "Page weight is 1,523KB against a 500KB budget (3x over), driven by oversized hero images (302KB, 222.5KB) and a JS bundle that appears to be an unminified/development build (data-loc debug attributes found in production DOM)",
+      "villa-sungai is missing from sitemap.xml despite being listed in llms.txt and being one of only two property listings on the site"
+    ],
+    "quick_wins": [
+      "Add /villa-sungai to sitemap.xml",
+      "Fix /villa-sungai's prerendered title/canonical/H1 to be page-specific instead of inheriting the homepage's",
+      "Re-encode the two oversized hero images (302KB, 222.5KB) to under 100KB",
+      "Change root HTML Cache-Control from no-store to a sane revalidation policy to restore bf-cache",
+      "Add Organization + WebSite + BreadcrumbList schema sitewide; move FAQPage schema onto /faq itself",
+      "Fix the 3.04:1 contrast on the 'PHOTO GALLERY' label"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 55,
+      "what_works": [
+        "Clean single-hop 301 www-to-apex redirect",
+        "sitemap.xml correctly referenced in robots.txt",
+        "8 of 9 routes have correct, unique, server-rendered title + canonical tags",
+        "Static assets cached 90 days with content-hashed filenames",
+        "HTTPS with HSTS via Cloudflare"
+      ],
+      "findings": [
+        {
+          "title": "/villa-sungai canonical points to homepage, duplicating its title/meta/H1",
+          "severity": "Critical",
+          "description": "The prerendered head for /villa-sungai is byte-for-byte the homepage's: same <title>, same meta description, same <link rel=canonical href=\"https://ecovillabali.com/\">, same server-rendered H1. Google will treat this as a non-canonical duplicate of the homepage.",
+          "recommendation": "Fix the SSG/prerender step to generate page-specific metadata for /villa-sungai matching the pattern already used correctly for /villa-kailash."
+        },
+        {
+          "title": "/villa-sungai missing from sitemap.xml",
+          "severity": "Critical",
+          "description": "sitemap.xml lists villa-kailash under Villa Pages but has no equivalent entry for villa-sungai, despite it being a primary nav destination and listed in llms.txt.",
+          "recommendation": "Add a <url> entry for https://ecovillabali.com/villa-sungai with the same priority/changefreq as villa-kailash."
+        },
+        {
+          "title": "Root HTML document served with Cache-Control: no-store",
+          "severity": "High",
+          "description": "This disables the back/forward cache entirely (confirmed via Lighthouse bf-cache audit) and forces a full document re-download on every navigation.",
+          "recommendation": "Change to a short max-age with revalidation, or at minimum drop no-store in favor of no-cache."
+        },
+        {
+          "title": "Deprecated unload event listener in main frame",
+          "severity": "High",
+          "description": "Chrome flags this as deprecated and it independently blocks bf-cache restoration.",
+          "recommendation": "Trace the source (likely GTM, Clarity, or app cleanup code) and replace with pagehide/visibilitychange."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality / GEO",
+      "score": 55,
+      "what_works": [
+        "llms.txt is present, accurate, and well-structured, correctly listing both villas and all key pages",
+        "robots.txt allows all crawlers including AI bots with no restrictive rules",
+        "JSON-LD RealEstateListing and FAQPage schema is server-rendered (not JS-injected) with specific, declarative, citable facts"
+      ],
+      "findings": [
+        {
+          "title": "Site is 100% client-side rendered; initial HTML is blank on 8 of 9 routes",
+          "severity": "Critical",
+          "description": "Fetching any route without executing JavaScript returns <div id=\"root\"></div> (0 characters of content) for every page except the homepage, which has only 47 characters (the H1). This is the same access pattern used by GPTBot, ClaudeBot, and PerplexityBot in most configurations, meaning the site is effectively invisible to AI answer engines despite having strong llms.txt and schema investments.",
+          "recommendation": "Move to static generation or server-side rendering (e.g. Vite SSG, Astro, Next.js) so full page content is present in the initial HTML response, not only after JS hydration."
+        },
+        {
+          "title": "No Organization, WebSite, BreadcrumbList, or LocalBusiness schema anywhere on the site",
+          "severity": "Medium",
+          "description": "Only RealEstateListing (2 pages) and FAQPage (1 page, misplaced on the homepage instead of /faq) schema exist. No entity definition for the business itself.",
+          "recommendation": "Add Organization (with sameAs social links), WebSite with SearchAction, BreadcrumbList sitewide, and consider LocalBusiness/RealEstateAgent given this is a Bali-based property business."
+        },
+        {
+          "title": "No visible author byline or E-E-A-T credential signals",
+          "severity": "Low",
+          "description": "No About page or named, accountable source was found in the rendered homepage content.",
+          "recommendation": "Add an About/team section with credentials and sameAs links to strengthen E-E-A-T."
+        }
+      ]
+    },
+    {
+      "name": "Performance (Core Web Vitals)",
+      "score": 35,
+      "what_works": [
+        "CLS is 0 on both audited pages — layout is stable",
+        "Total Blocking Time is 20ms — main thread is not the bottleneck",
+        "Static assets are compressed and CDN-served with long cache lifetimes"
+      ],
+      "findings": [
+        {
+          "title": "LCP is 6.3-7.2s against a 1.8s target",
+          "severity": "Critical",
+          "description": "LCP breakdown shows 838ms TTFB + 1,729ms element render delay; the LCP element (hero paragraph text) is blocked behind full JS hydration rather than present in server-rendered HTML.",
+          "recommendation": "Fix via the same SSR/SSG change needed for GEO — server-render the hero content so it paints before JS executes."
+        },
+        {
+          "title": "Total page weight is 1,523KB against a 500KB budget",
+          "severity": "High",
+          "description": "Two hero images alone (302KB + 222.5KB) account for over a third of total weight; the main JS bundle is 125.7KB gzipped against a 70KB budget; unused JS is estimated at 224KB.",
+          "recommendation": "Re-encode hero images under 100KB, verify the production build is minified (data-loc debug attributes suggest a dev build may be shipping), and code-split/tree-shake the JS bundle."
+        },
+        {
+          "title": "data-loc debug attributes found in production DOM",
+          "severity": "High",
+          "description": "Attributes like data-loc=\"client/src/components/Hero.tsx:71\" are typically dev-tooling artifacts and suggest the deployed build may not be a fully optimized production build.",
+          "recommendation": "Verify the build pipeline strips dev-only plugins/attributes before deploying to production."
+        },
+        {
+          "title": "Same interior photo loaded at two sizes on one view",
+          "severity": "Medium",
+          "description": "villa-interior.webp (126.3KB) and villa-interior-960w.webp (98.1KB) both load for what appears to be a single rendered image, doubling its cost.",
+          "recommendation": "Fix the srcset/picture configuration so only the correctly-sized candidate loads."
+        }
+      ]
+    },
+    {
+      "name": "Accessibility",
+      "score": 90,
+      "what_works": [
+        "No missing or empty alt text detected",
+        "No console errors, no mixed content, CSP/XSS checks pass",
+        "Lighthouse Accessibility score of 95/100"
+      ],
+      "findings": [
+        {
+          "title": "Insufficient color contrast on 'PHOTO GALLERY' label",
+          "severity": "Medium",
+          "description": "3.04:1 contrast ratio (#d86d38 on #f1f3ea) against a 4.5:1 requirement for this text size.",
+          "recommendation": "Darken the accent color or increase text size/weight to qualify under the 3:1 large-text threshold."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 65,
+      "what_works": [
+        "All images have descriptive, non-filename alt text",
+        "WebP format adopted sitewide with some responsive -960w variants",
+        "Lazy-loading correctly scoped to below-the-fold images only, hero image correctly eager"
+      ],
+      "findings": [
+        {
+          "title": "Hero images 2-3x over the 100KB sustainability budget",
+          "severity": "High",
+          "description": "villa-sungai-hero.webp is 302KB and VS2.webp is 222.5KB.",
+          "recommendation": "Re-compress to target SSIM > 0.95 under 100KB; consider AVIF for further savings."
+        },
+        {
+          "title": "1 image missing explicit width/height attributes",
+          "severity": "Low",
+          "description": "Minor CLS-safety gap, not currently causing visible shift.",
+          "recommendation": "Add explicit width/height to guarantee CLS remains 0 as content changes."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Fix /villa-sungai's prerendered title, meta description, canonical URL, and H1 to be page-specific",
+          "Add /villa-sungai to sitemap.xml",
+          "Scope and plan the SSR/SSG migration to eliminate blank initial HTML sitewide (highest-leverage fix, resolves GEO invisibility and LCP simultaneously)"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Re-encode villa-sungai-hero.webp and VS2.webp to under 100KB",
+          "Verify/fix production build pipeline (data-loc attributes suggest a dev build may be shipping)",
+          "Change root document Cache-Control away from no-store",
+          "Trace and remove the deprecated unload event listener",
+          "Fix duplicate-size image loading on interior photos"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Add Organization, WebSite+SearchAction, BreadcrumbList schema sitewide",
+          "Add LocalBusiness/RealEstateAgent schema",
+          "Move FAQPage schema onto /faq itself",
+          "Add About/team section with author credentials and sameAs links"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Fix PHOTO GALLERY label contrast to 4.5:1",
+          "Add explicit width/height to remaining image",
+          "Re-run Lighthouse and re-fetch all routes without JS after the SSR fix ships to confirm content is now crawlable",
+          "Manual accessibility pass: keyboard-only, screen reader, 200%/400% zoom, high contrast mode"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
