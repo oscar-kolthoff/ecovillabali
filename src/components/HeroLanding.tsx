@@ -48,14 +48,13 @@ export default function HeroLanding() {
           </span>
 
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1]">
-            Two Eco Villas Near{" "}
+            Eco Villas for Sale Near{" "}
             <span className="text-secondary italic">Green School Bali</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/90 max-w-xl leading-relaxed font-light">
-            Two unique eco villas within an 8-minute walk of Green School Bali.
-            Designed for families looking for nature, community and sustainable
-            living.
+            A rare opportunity to live in one of Bali's most sought-after
+            family communities.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
