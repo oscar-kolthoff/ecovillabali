@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const HERO_IMAGE = "/images/villa-sungai-hero.webp";
+export const HERO_IMAGE = "/images/villa-interior.webp";
 
 /**
  * Landing hero for the homepage. Introduces BOTH villas equally with two
@@ -24,17 +24,23 @@ export default function HeroLanding() {
       <div className="absolute inset-0 z-0">
         <img
           src={HERO_IMAGE}
-          srcSet="/images/villa-sungai-hero-mobile.webp 750w, /images/villa-sungai-hero.webp 1400w"
+          srcSet="/images/villa-interior-mobile.webp 750w, /images/villa-interior.webp 1400w"
           sizes="100vw"
-          alt="Villa Sungai exterior near Green School Bali"
-          width={1600}
-          height={1067}
+          alt="Open-air living room of a Villa Sungai home framed by jungle near Green School Bali"
+          width={1400}
+          height={934}
           fetchPriority="high"
           loading="eager"
           decoding="async"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        {/* Two stacked scrims: a left-to-right one gives the headline column a
+            dark enough backing for WCAG-legible white text over this bright,
+            warm interior, while fading to transparent so the hanging chair and
+            jungle view on the right stay clear. The vertical one adds depth at
+            the bottom for the scroll indicator. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/55" />
       </div>
 
       {/* Content */}

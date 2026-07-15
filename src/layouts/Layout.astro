@@ -19,7 +19,10 @@ interface Props {
 }
 
 const { title, description, image = DEFAULT_IMAGE, type = "website" } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
+// Normalise to the no-slash form (matching the sitemap) so canonical and
+// og:url never advertise a trailing-slash duplicate, even if one is hit.
+const normalisedPath = Astro.url.pathname.replace(/(.)\/+$/, "$1");
+const canonicalUrl = new URL(normalisedPath, SITE_URL).toString();
 const cspNonce = Astro.locals.cspNonce as string | undefined;
 ---
 
@@ -62,28 +65,34 @@ const cspNonce = Astro.locals.cspNonce as string | undefined;
     <!-- Page-specific structured data (FAQPage, Product, BreadcrumbList) -->
     <slot name="head" />
 
-    <!-- Google tag (gtag.js): dataLayer is wired up immediately so early
-         gtag() calls queue correctly, but the ~72KB script itself is only
-         fetched on first user interaction (or after 5s for users who never
-         interact), keeping it off the critical path for LCP/INP. -->
+    <!-- Analytics (gtag.js + Microsoft Clarity): the queue stubs are wired up
+         immediately so early gtag()/clarity() calls don't drop, but the heavy
+         scripts (~72KB gtag, ~25KB Clarity) are only fetched on first user
+         interaction (or after 5s for users who never interact), keeping both
+         off the critical path for LCP/INP. -->
     <script is:inline nonce={cspNonce}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-XW73MEVXWG');
+      window.clarity = window.clarity || function(){(window.clarity.q=window.clarity.q||[]).push(arguments)};
 
-      function loadGTM() {
-        if (window.__gtmLoaded) return;
-        window.__gtmLoaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XW73MEVXWG';
-        document.head.appendChild(s);
+      function loadAnalytics() {
+        if (window.__analyticsLoaded) return;
+        window.__analyticsLoaded = true;
+        var g = document.createElement('script');
+        g.async = true;
+        g.src = 'https://www.googletagmanager.com/gtag/js?id=G-XW73MEVXWG';
+        document.head.appendChild(g);
+        var c = document.createElement('script');
+        c.async = true;
+        c.src = 'https://www.clarity.ms/tag/x73tmcq99l';
+        document.head.appendChild(c);
       }
       ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (evt) {
-        window.addEventListener(evt, loadGTM, { once: true, passive: true });
+        window.addEventListener(evt, loadAnalytics, { once: true, passive: true });
       });
-      setTimeout(loadGTM, 5000);
+      setTimeout(loadAnalytics, 5000);
     </script>
   </head>
 
