@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Eco Villa Bali">
+  <rect width="64" height="64" rx="14" fill="#f5f1e7"/>
+  <g transform="rotate(6 32 32)">
+    <path d="M32 11C19 25 19 42 32 53C45 42 45 25 32 11Z" fill="#33513c"/>
+    <path d="M32 16V49" stroke="#f5f1e7" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M32 28L24 24M32 28L40 24M32 37L25 34M32 37L39 34" stroke="#f5f1e7" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+</svg>
