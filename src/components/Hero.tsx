@@ -74,7 +74,7 @@ export default function Hero({ villa = 'sungai' }: HeroProps) {
 
           {/* 3. Spec line: quiet, dot-separated supporting detail. One row on
               desktop, wraps on mobile. */}
-          <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/85 text-xs sm:text-base sm:gap-x-2.5 lg:flex-nowrap lg:whitespace-nowrap">
+          <ul className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-white/90 text-lg md:text-xl">
             {currentData.spec.map((item, index) => (
               <li key={item} className="flex items-center gap-2.5">
                 {index > 0 && <span aria-hidden="true" className="text-secondary/80">·</span>}
