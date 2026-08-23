@@ -104,10 +104,10 @@ export default function Location({ villa = 'sungai' }: LocationProps) {
           {/* Image/Map Placeholder */}
           <div className="order-1 lg:order-2 h-[500px] rounded-2xl overflow-hidden shadow-xl relative group">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/ayung-river_7ee939a1.jpg"
-              alt="Ayung River, Eco Village Sibang"
-              width={4032}
-              height={3024}
+              src="/images/location-gallery-08-aerial-misty-sunrise.webp"
+              alt="Jungle canopy at misty sunrise over Eco Village Sibang"
+              width={900}
+              height={675}
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -167,10 +167,10 @@ export default function Location({ villa = 'sungai' }: LocationProps) {
             {/* Image */}
             <div className="rounded-2xl overflow-hidden shadow-xl relative group">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/GreenCorridor_36298ca3.jpeg"
-                alt="Green Corridor Map"
-                width={1153}
-                height={1600}
+                src="/images/location-gallery-01-pathway-thatched-villas.webp"
+                alt="Pathway winding through the thatched villas of Eco Village Sibang"
+                width={900}
+                height={1200}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-auto transition-transform duration-700 group-hover:scale-105"

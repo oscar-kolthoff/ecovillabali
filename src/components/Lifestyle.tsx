@@ -26,16 +26,16 @@ export default function Lifestyle() {
             {
               title: "Cultural Immersion",
               desc: "Participate in local ceremonies, learn Balinese dance, and connect with the village traditions.",
-              image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/cultural-immersion_bca16791.jpg",
-              width: 4032,
-              height: 3024,
+              image: "/images/location-gallery-04-balinese-shrine.webp",
+              width: 900,
+              height: 600,
             },
             {
               title: "Mindful Community",
               desc: "Join a vibrant international community of families, educators, and changemakers centered around Green School.",
-              image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/mindful-community_013756d3.jpg",
-              width: 4032,
-              height: 3024,
+              image: "/images/location-gallery-12-community-group-photo.webp",
+              width: 900,
+              height: 675,
             }
           ].map((item, index) => (
             <motion.div

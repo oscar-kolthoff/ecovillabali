@@ -7,14 +7,6 @@ export default function GalleryKailash() {
 
   const galleryImages = [
     {
-      src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/01.OverviewVilla1_5a36f70a.jpg",
-      width: 2048,
-      height: 1365,
-      alt: "Villa Kailash Overview",
-      title: "Villa Overview",
-      desc: "Stunning exterior view of Villa Kailash showcasing its modern design and natural setting"
-    },
-    {
       src: "/images/villa-kailash/01.Overviewvilla2.jpg",
       width: 2048,
       height: 1365,
@@ -197,14 +189,6 @@ export default function GalleryKailash() {
       alt: "Bathroom B",
       title: "Bathroom B",
       desc: "Secondary bathroom with modern fixtures and practical design"
-    },
-    {
-      src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/10.Semi-basement-yoga1_9a16a2f0.jpg",
-      width: 2048,
-      height: 1365,
-      alt: "Yoga Studio",
-      title: "Yoga Studio",
-      desc: "Serene yoga and meditation space in the semi-basement level"
     },
     {
       src: "/images/villa-kailash/10.Semi-basement-yoga2.jpg",

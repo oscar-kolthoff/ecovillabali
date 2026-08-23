@@ -49,7 +49,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       "font-src 'self'; " +
       // Clarity spins up a session-recording Web Worker from a blob: URL.
       "worker-src 'self' blob:; " +
-      "img-src 'self' data: https://d2xsxph8kpxj0f.cloudfront.net https://www.google-analytics.com https://*.clarity.ms https://c.bing.com; " +
+      "img-src 'self' data: https://www.google-analytics.com https://*.clarity.ms https://c.bing.com; " +
       "connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com; " +
       "frame-ancestors 'none';";
     response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");

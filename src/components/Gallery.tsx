@@ -206,14 +206,6 @@ export default function Gallery() {
       title: "Above the Canopy",
       desc: "Aerial view over the dense palm canopy that surrounds the villa in the golden morning light"
     },
-    {
-      src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663274498489/8n6646SQwY4TnXNqV7Rqb2/IMG_5403_eb31c991.jpg",
-      width: 4032,
-      height: 3024,
-      alt: "Villa Sungai",
-      title: "Villa Sungai",
-      desc: "Immerse yourself with nature and jungle surroundings"
-    },
   ];
 
   const handlePrevious = () => {
