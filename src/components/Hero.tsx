@@ -13,8 +13,10 @@ export const villaData = {
     width: 1600,
     height: 1067,
     name: 'Villa Sungai',
-    headline: 'Living Near Green School Bali',
-    description: "Villa Sungai is a sustainable 3 bedroom villa near Green School Bali, located in Eco Village Sibang just an 8 minute walk from campus. Designed for families relocating to Bali, it offers modern comfort, natural surroundings and a thriving international community.",
+    spec: ['3 bedrooms', 'Private pool', 'Riverside setting', '8 min walk to Green School Bali', 'Leasehold to Oct 2047'],
+    intro: "Villa Sungai is a sustainable 3 bedroom villa near Green School Bali, located in Eco Village Sibang just an 8 minute walk from campus. Designed for families relocating to Bali, it offers modern comfort, natural surroundings and a thriving international community.",
+    priceUSD: 'USD 379,000',
+    priceIDR: 'IDR 6.7 billion',
   },
   kailash: {
     image: '/images/villa-kailash-hero.webp',
@@ -22,8 +24,10 @@ export const villaData = {
     width: 1600,
     height: 1066,
     name: 'Villa Kailash',
-    headline: 'Your Home Near Green School Bali',
-    description: "Villa Kailash is a spacious 3/4 bedroom villa near Green School Bali, located in Eco Village Sibang just an 8 minute walk from campus. Designed for families relocating to Bali, it combines flexible indoor & outdoor living with a yoga studio, home office and entertainment space.",
+    spec: ['3–4 bedrooms', 'Private pool', 'Yoga studio & home office', '8 min walk to Green School Bali', 'Leasehold to Oct 2047'],
+    intro: "Villa Kailash is a spacious 3/4 bedroom villa near Green School Bali, located in Eco Village Sibang just an 8 minute walk from campus. Designed for families relocating to Bali, it combines flexible indoor & outdoor living with a yoga studio, home office and entertainment space.",
+    priceUSD: 'USD 419,000',
+    priceIDR: 'IDR 7.4 billion',
   }
 };
 
@@ -57,36 +61,42 @@ export default function Hero({ villa = 'sungai' }: HeroProps) {
       {/* Content */}
       <div className="relative z-10 container h-full flex flex-col justify-center items-start pt-20">
         {/* No entrance fade here either: same LCP reasoning as HeroLanding. */}
-        <div className="max-w-3xl space-y-4">
+        <div className="max-w-3xl space-y-5">
+          {/* 1. Status badge (styling unchanged) */}
           <span className="inline-block px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white text-sm font-medium tracking-wider uppercase">
             For Sale
           </span>
-          
-          <div className="space-y-0">
-            <div className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2]">
-              <div className="text-secondary italic">{currentData.name}</div>
-            </div>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2]">
-              {currentData.headline}
-            </h1>
+
+          {/* 2. Villa name is the H1 and the dominant element on the page */}
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05]">
+            {currentData.name}
+          </h1>
+
+          {/* 3. Spec line: quiet, dot-separated supporting detail. One row on
+              desktop, wraps on mobile. */}
+          <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/85 text-xs sm:text-sm sm:gap-x-2.5 lg:flex-nowrap lg:whitespace-nowrap">
+            {currentData.spec.map((item, index) => (
+              <li key={item} className="flex items-center gap-2.5">
+                {index > 0 && <span aria-hidden="true" className="text-secondary/80">·</span>}
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* 4. Asking price (unchanged): USD leads for the international buyer
+              audience, with the IDR equivalent as a secondary reference. */}
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pt-2">
+            <span className="font-serif text-3xl md:text-4xl font-bold text-secondary">
+              {currentData.priceIDR}
+            </span>
+            <span className="text-white/80 text-base md:text-lg">/ {currentData.priceUSD}</span>
           </div>
 
-          <p className="text-lg md:text-xl text-white/90 max-w-xl leading-relaxed font-light">
-            {currentData.description}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button 
-              size="lg" 
+          {/* 5. Single call to action */}
+          <div className="pt-2">
+            <Button
+              size="lg"
               className="bg-white text-primary hover:bg-white/90 rounded-full px-8 h-14 text-lg font-serif"
-              onClick={() => document.getElementById('villa')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Discover the Villa
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white/10 hover:text-white rounded-full px-8 h-14 text-lg font-serif"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Schedule Viewing

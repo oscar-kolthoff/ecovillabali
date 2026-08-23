@@ -1,8 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero";
+import VillaIntro from "@/components/VillaIntro.astro";
 import VillaDetails from "@/components/VillaDetails";
 import Gallery from "@/components/Gallery";
+import FloorPlans from "@/components/FloorPlans";
 import VillaHighlights, { villaHighlightsData } from "@/components/VillaHighlights";
 import Contact from "@/components/Contact";
 import MeetTheOwners from "@/components/MeetTheOwners";
@@ -47,8 +49,10 @@ const cspNonce = Astro.locals.cspNonce;
   </Fragment>
 
   <Hero villa="sungai" client:load />
+  <VillaIntro villa="sungai" />
   <VillaDetails villa="sungai" client:visible />
   <Gallery client:visible />
+  <FloorPlans villa="sungai" client:visible />
   <VillaHighlights villa="sungai" client:visible />
   <Contact villa="sungai" client:visible />
   <MeetTheOwners client:visible />

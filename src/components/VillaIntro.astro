@@ -1,0 +1,26 @@
+---
+// Overview section directly below the hero. Holds the descriptive paragraph
+// that used to live in the hero (relocated, not deleted) so the keyword
+// phrases ("Green School Bali", "Eco Village Sibang", "8 minute walk",
+// "families relocating to Bali") stay on the page, with room to expand for
+// search. Server-rendered: no client JS, in the initial HTML for crawlers.
+import { villaData } from "@/components/Hero";
+
+interface Props {
+  villa: "sungai" | "kailash";
+}
+
+const { villa } = Astro.props;
+const { intro } = villaData[villa];
+---
+
+<section class="py-16 md:py-20 bg-background">
+  <div class="container">
+    <div class="max-w-3xl">
+      <span class="text-accent font-medium tracking-widest uppercase text-sm">Overview</span>
+      <p class="mt-4 text-lg md:text-xl text-muted-foreground leading-relaxed">
+        {intro}
+      </p>
+    </div>
+  </div>
+</section>
